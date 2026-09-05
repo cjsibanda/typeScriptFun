@@ -63,6 +63,60 @@ function getButtonPadding(size: ButtonSizes): string {
     }
 }
 
+/***********************************************************
+ * ------------ sortOrderMessage(Literal Types) ------------
+ * A function that accepts a parameter with a literal
+ * type of either "ascending" or "descending"...
+ * returns a corresponding message
+ **********************************************************/
+function sortOrderMessage(order: "ascending" | "descedning"): string {
+    return `6. The order is set to ${order}.`;
+}
+
+
+//-------------------------------------------------------
+// Discriminated Union
+//-------------------------------------------------------
+interface Circle {
+    kind: "circle";
+    radius: number;
+}
+
+interface Square {
+    kind: "square";
+    sideLength: number;
+}
+
+type Shape = Circle | Square;
+
+const shapes: Shape[] = [
+    {kind: "circle", radius: 5},
+    {kind: "square", sideLength: 10}
+];
+
+function processShapes() {
+    shapes.forEach((shape: Shape) => {
+        switch (shape.kind) {
+            case "circle":
+                context.drawCircle(shape.radius);
+                break;
+            case "square":
+                context.drawSquare(shape.sideLength);
+                break;
+        }
+    });
+}
+
+const context = {
+    drawCircle: (radius: number) => console.log(`7. Drawing a circle with radius: ${radius}`),
+    drawSquare: (sideLength: number) => console.log(`7. Drawing a square with side length: ${sideLength}`)
+}
+
+
+
+
+
+
 //---------------------------------------------
 // ********** Trust but verify ***************
 //----------------------------------------------
@@ -81,3 +135,8 @@ console.log(getValueFromDict("name", dict));
 const selectedSize: ButtonSizes = "medium";
 console.log("5. Selected button size:", selectedSize);
 console.log("5. Padding for medium", getButtonPadding(selectedSize));
+//6. testing sortOrderMessage(Literal Types)
+console.log(sortOrderMessage("ascending"));
+console.log(sortOrderMessage("descedning"));
+//7. Testing Discriminated Union
+processShapes();
