@@ -133,7 +133,7 @@ type PointUpdate = {
 };
 
 /****************************************************
- *------------- NullablePoint (Mapped Typed) -------
+ *------------- NullablePoint (Mapped Types) -------
  * Iterates over each key P in Point, taking the original
  * property type (Point[P]) and unioning it with `null`
  * **************************************************/
