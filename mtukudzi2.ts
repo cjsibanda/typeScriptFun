@@ -114,8 +114,32 @@ const context = {
 
 
 
+//------------------------------------------------------
+// Mapped Types
+//-----------------------------------------------------
+interface Point {
+    x: number;
+    y: number;
+}
 
+/*************************************************
+ * ----------- Point Update (Mapped Types) --------
+ * Iterates over the keys of an eisting type (Point)
+ * Using `keyof` and `in` making every property optional (?)
+ * while preserving it's original data type.
+ * ***********************************************/
+type PointUpdate = {
+    [P in keyof Point]?: Point[P];
+};
 
+/****************************************************
+ *------------- NullablePoint (Mapped Typed) -------
+ * Iterates over each key P in Point, taking the original
+ * property type (Point[P]) and unioning it with `null`
+ * **************************************************/
+type NullablePoint = {
+    [P in keyof Point]: Point[P] | null;
+};
 
 //---------------------------------------------
 // ********** Trust but verify ***************
@@ -140,3 +164,18 @@ console.log(sortOrderMessage("ascending"));
 console.log(sortOrderMessage("descedning"));
 //7. Testing Discriminated Union
 processShapes();
+
+//8. Testing Mapped Types (PointUpdate)
+const originalPoint: Point = { x: 10, y: 20 };
+const updatedPoint: PointUpdate = { x: 15 }; //can ommit y because of mapped type
+console.log("8.Original Point:", originalPoint);
+console.log("8. PointUpdate (Mapped Type) witj only x changed", updatedPoint);
+
+//9. Testing NullablePoint (Mapped Types with Union)
+const nullablePointTest: NullablePoint = {
+    x: null,
+    y: 42
+};
+
+console.log("9. nullablePoint test", nullablePointTest);
+
