@@ -141,6 +141,54 @@ type NullablePoint = {
     [P in keyof Point]: Point[P] | null;
 };
 
+/********************************************************************
+* ------------------------------ Mixins ---------------------------
+* Combined behavior from multiple classes using a helper
+* ... function, since Typescript lacks native multiple inheritence
+*******************************************************************/
+class Disposable {
+    isDispobale = boolean = false;
+    dispose() {
+        this.isDisposed = true;
+    }
+
+//Actionable Mixin
+class Actionable {
+    isActive = boolean = false;
+    activate() {
+        this.isActive = true;
+    }
+    deactivate() {
+        this.isActive = false;
+    }
+}
+
+//The combined class
+class SmartObject implements Disposable, Actionable {
+    interact() {
+        this.activate();
+    }
+
+    //disposable
+    isDisposed: boolean = false;
+    dispose!: () => void;
+
+    //Actionable 
+    isActive: boolean = false;
+    activate: () => void;
+    diactivate: () => void;
+}
+
+function applyMixins(derivedCtor: any, baseCtors: any[]) {
+    baseCtors.forEach(baseCtor => {
+        Object.getOwnProperty(baseCtor.prototype).forEach(name => {
+            if (name == "constructor") {
+                derivedCtor.prototype[name] = baseCtor.prototype[name];
+            }
+        })
+    })
+}
+    
 //---------------------------------------------
 // ********** Trust but verify ***************
 //----------------------------------------------
@@ -178,4 +226,6 @@ const nullablePointTest: NullablePoint = {
 };
 
 console.log("9. nullablePoint test", nullablePointTest);
+
+
 
