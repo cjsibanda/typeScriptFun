@@ -181,7 +181,7 @@ class SmartObject implements Disposable, Actionable {
 
 function applyMixins(derivedCtor: any, baseCtors: any[]) {
     baseCtors.forEach(baseCtor => {
-        Object.getOwnProperty(baseCtor.prototype).forEach(name => {
+        Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
             if (name == "constructor") {
                 derivedCtor.prototype[name] = baseCtor.prototype[name];
             }
