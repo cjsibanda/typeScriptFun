@@ -228,7 +228,7 @@ const nullablePointTest: NullablePoint = {
 console.log("9. nullablePoint test", nullablePointTest);
 
 /10. Testing Mixins
-applyMixins(smartObject, [Disposable, Activatable]);
+applyMixins(SmartObject, [Disposable, Actionable]);
 const smartObj = new SmartObj();
 console.log("10. Initial SmartObject -> Active:", smartObj.isActive, "| Disposed:" smartObj.isDisposed);
 smartObj.iteract();
