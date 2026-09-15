@@ -19,3 +19,13 @@ namespace MyNamespace {
     return `The secret is: ${secretCode}`;
   }
 }
+
+//----------------------------------------------------------
+// **************** Trust but verify -----------------------
+//----------------------------------------------------------
+
+//1. Testing Namespaces
+console.log("--- 1. Testing Namespaces ---");
+console.log("1. Accessing exported constant:", MyNamespace.myValue);
+console.log("1. Calling namespace function:", MyNamespace.greet("Sibanda"));
+console.log("1. Calling function utilizing private/internal data:", MyNamespace.revealSecret());
