@@ -1,5 +1,5 @@
 /*******************************************************************************
-* ---------------------- MyNamespace (Namespaces) ------------------------------
+* ---------------------- MyNamespace (1. Namespaces) ------------------------------
 * Namespaces encapsulate code into logical groupings
 * Namespaces help avoid global scope pollution and 
 * ... organize code logically
@@ -17,6 +17,21 @@ namespace MyNamespace {
 
   export function revealSecret(): string {
     return `The secret is: ${secretCode}`;
+  }
+}
+
+/***********************************************************************
+* ---------------- Geometry (2. Namespaces) -------------------------------
+* Demonstrating encapsulating geometric calculation functions
+* inside a single namespace
+************************************************************************/
+namespace Geometry {
+  export function areaOfRectangle(width: number, height: number): number {
+    return width * height;
+  }
+
+  export function areaOfCircle(radius: number): number {
+    return Math.PI * radius * radius;
   }
 }
 
