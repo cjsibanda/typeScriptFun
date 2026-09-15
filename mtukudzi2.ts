@@ -69,7 +69,7 @@ function getButtonPadding(size: ButtonSizes): string {
  * type of either "ascending" or "descending"...
  * returns a corresponding message
  **********************************************************/
-function sortOrderMessage(order: "ascending" | "descedning"): string {
+function sortOrderMessage(order: "ascending" | "desceding"): string {
     return `6. The order is set to ${order}.`;
 }
 
@@ -147,7 +147,7 @@ type NullablePoint = {
 * ... function, since Typescript lacks native multiple inheritence
 *******************************************************************/
 class Disposable {
-    isDispobale = boolean = false;
+    isDispobale: boolean = false;
     dispose() {
         this.isDisposed = true;
     }
@@ -209,7 +209,7 @@ console.log("5. Selected button size:", selectedSize);
 console.log("5. Padding for medium", getButtonPadding(selectedSize));
 //6. testing sortOrderMessage(Literal Types)
 console.log(sortOrderMessage("ascending"));
-console.log(sortOrderMessage("descedning"));
+console.log(sortOrderMessage("descending"));
 //7. Testing Discriminated Union
 processShapes();
 
