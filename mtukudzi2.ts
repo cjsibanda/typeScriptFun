@@ -151,7 +151,7 @@ class Disposable {
     dispose() {
         this.isDisposed = true;
     }
-
+}
 //Actionable Mixin
 class Actionable {
     isActive = boolean = false;
