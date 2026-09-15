@@ -44,3 +44,8 @@ console.log("--- 1. Testing Namespaces ---");
 console.log("1. Accessing exported constant:", MyNamespace.myValue);
 console.log("1. Calling namespace function:", MyNamespace.greet("Sibanda"));
 console.log("1. Calling function utilizing private/internal data:", MyNamespace.revealSecret());
+//Testing the Geometry namespace functions
+console.log("--- 2. Testing Geometry Namespace ---");
+console.log("2. Area of Rectangle (10 x 5):", Geometry.areaOfRectangle(10, 5));
+console.log("2. Area of Circle (radius 7):", Geometry.areaOfCircle(7).toFixed(2));
+
