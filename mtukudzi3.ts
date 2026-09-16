@@ -35,6 +35,27 @@ namespace Geometry {
   }
 }
 
+/*************************************************************************
+* -------------------------- Utility Types (3. Readonly) ------------
+* Using TypeScript's built-in Readonly<T> utitlity type
+* to make all properties of an existing type immutable
+* at compile time, preventing accidental mutations.
+**************************************************************************/
+type Point = {
+ x: number;
+ y: number; 
+};
+
+type ReadonlyPoint = Readonly<Point>;
+
+function modifyReadPoint(point: ReadonlyPoint): void {
+  //If the line below is uncommented, TypeScript will throw an error
+  // "Cannot assign to 'x' because it is a read-only property."
+  // point.x = 50;
+  console.log(`3. ReadonlyPoint value -> x: ${point.x}, y: ${point.y}`);
+}
+
+
 //----------------------------------------------------------
 // **************** Trust but verify -----------------------
 //----------------------------------------------------------
@@ -44,8 +65,12 @@ console.log("--- 1. Testing Namespaces ---");
 console.log("1. Accessing exported constant:", MyNamespace.myValue);
 console.log("1. Calling namespace function:", MyNamespace.greet("Sibanda"));
 console.log("1. Calling function utilizing private/internal data:", MyNamespace.revealSecret());
-//Testing the Geometry namespace functions
+//2. Testing the Geometry namespace functions
 console.log("--- 2. Testing Geometry Namespace ---");
 console.log("2. Area of Rectangle (10 x 5):", Geometry.areaOfRectangle(10, 5));
 console.log("2. Area of Circle (radius 7):", Geometry.areaOfCircle(7).toFixed(2));
+//3. Testing Readonly Utility Type
+modifyReadonlyPoint({x: 10, y: 20});
+console.log("Start small. Ship something.");
+
 
