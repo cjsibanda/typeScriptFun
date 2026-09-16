@@ -56,6 +56,21 @@ function modifyReadPoint(point: ReadonlyPoint): void {
 }
 
 
+/*************************************************************
+* ------------------ displayTuple (4. Tuples) -----------------
+* Function accepts a tuple containing a fixed sequence of types
+* (a string and a number), destructures it, and returns 
+* a formated message
+**************************************************************/
+function displayTuple(input: [string, number]): string {
+  const [label, value] = input;
+  return `The value for ${label} is ${value}.`
+}
+
+
+
+
+
 //----------------------------------------------------------
 // **************** Trust but verify -----------------------
 //----------------------------------------------------------
@@ -72,5 +87,7 @@ console.log("2. Area of Circle (radius 7):", Geometry.areaOfCircle(7).toFixed(2)
 //3. Testing Readonly Utility Type
 modifyReadonlyPoint({x: 10, y: 20});
 console.log("Start small. Ship something.");
-
+//4. Testing Tuples
+// Note: Notice values are passes as a strict tuple array `[string, number]`
+console.log(displayTuple(["Age", 99])); //Expect: The value for Age is 99
 
