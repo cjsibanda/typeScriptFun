@@ -155,7 +155,10 @@ try {
 // Verifying it stays the same
 console.log("5. Post-mutation check :", greeterInstance.greet());
 
-
+// Testing the Log Decorator
+console.log("--- 6. Testing Log Decorator ---");
+const calc = new Calculator();
+const sum = calc.add(5, 7);
 
 
 
