@@ -146,7 +146,7 @@ console.log("5. Initial greet output:", greetInstance.greet());
 //To attempt to ovewrite the readonly greet method
 try {
   //casting to 'any' to bypass TS compiler check so we can observe runtime behavior
-  (greeterIntance as any).greet = function() {
+  (greetIntance as any).greet = function() {
     return: "Hacked!";
   };
 } catch (e: any) {
