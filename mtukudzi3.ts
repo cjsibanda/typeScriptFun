@@ -37,7 +37,7 @@ namespace Geometry {
 
 /*************************************************************************
 * -------------------------- Utility Types (3. Readonly) ------------
-* Using TypeScript's built-in Readonly<T> utitlity type
+* Using TypeScript's built-in Readonly<T> utility type
 * to make all properties of an existing type immutable
 * at compile time, preventing accidental mutations.
 **************************************************************************/
@@ -48,7 +48,7 @@ type Point = {
 
 type ReadonlyPoint = Readonly<Point>;
 
-function modifyReadPoint(point: ReadonlyPoint): void {
+function modifyReadonlyPoint(point: ReadonlyPoint): void {
   //If the line below is uncommented, TypeScript will throw an error
   // "Cannot assign to 'x' because it is a read-only property."
   // point.x = 50;
@@ -69,9 +69,9 @@ function displayTuple(input: [string, number]): string {
 
 /*************************************************************************
 * -------------- Decorators (5. Meta-programming) ----------------
-* Using Method Decorators to modify class behavior to design time.
+* Using Method Decorators to modify class behavior at design time.
 * The @readonly decorator sets the property descriptor's writable
-* flag tp false. preventing accidental or malicious method reassignments
+* flag to false, preventing accidental or malicious method reassignments
 **************************************************************************/
 function readonly(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
   descriptor.writable = false;
@@ -104,9 +104,9 @@ function log(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     console.log(`[LOG]: Calling "${propertyKey}" with arguments:`, args);
 
     // Execute the original method with the correct context ('this') and arguments
-    const result = originalMethod.apple(this, args);
+    const result = originalMethod.apply(this, args);
 
-    console.log(`[LOG]: Method "${propertyKey}" returned:`, result):
+    console.log(`[LOG]: Method "${propertyKey}" returned:`, result);
     return result;
   };
 }
@@ -153,7 +153,7 @@ try {
   console.log("5. Caught expected mutation error:", e.message);
 }
 // Verifying it stays the same
-console.log("5. Post-mutation check :", greeterInstance.greet());
+console.log("5. Post-mutation check :", greetInstance.greet());
 
 // Testing the Log Decorator
 console.log("--- 6. Testing Log Decorator ---");
