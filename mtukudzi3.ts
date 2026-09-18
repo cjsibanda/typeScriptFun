@@ -109,6 +109,29 @@ console.log("Start small. Ship something.");
 //4. Testing Tuples
 // Note: Notice values are passes as a strict tuple array `[string, number]`
 console.log(displayTuple(["Age", 99])); //Expect: The value for Age is 99
+//5. Testing Decorators
+console.log("--- 5. Testing Decorators ---");
+const greeterInstance = new Greeter("Father");
+console.log("5. Initial greet output:", greetInstance.greet());
+
+//To attempt to ovewrite the readonly greet method
+try {
+  //casting to 'any' to bypass TS compiler check so we can observe runtime behavior
+  (greeterIntance as any).greet = function() {
+    return: "Hacked!";
+  };
+} catch (e: any) {
+  console.log("5. Caught expected mutation error:", e.message);
+}
+
+// Verifyig the method behavior remains unchanged
+console.log("5. Post-mutation check :", greeterInstance.greet());
+
+
+
+
+
+
 
 
 
