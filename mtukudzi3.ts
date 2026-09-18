@@ -90,6 +90,35 @@ class Greeter {
   }
 }
 
+/*************************************************************************
+* -------------- Log (6. Decorators) ----------------
+* A decorator called log that logs to the console each time
+* a method is called. Apply this decorator to a method within a class
+**************************************************************************/
+function log(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+  //Store a reference to the original method
+  const originalMethod = descriptor.value;
+
+  //Replace the original method with our custom wrapper function
+  descriptor.value = function (... args: any[]) {
+    console.log(`[LOG]: Calling "${propertyKey}" with arguments:`, args);
+
+    // Execute the original method with the correct context ('this') and arguments
+    const result = originalMethod.apple(this, args);
+
+    console.log(`[LOG]: Method "${propertyKey}" returned:`, result):
+    return result;
+  };
+}
+
+class Calculator {
+  @log
+  add(a: number, b: number): number {
+    return a + b;
+  }
+}
+
+
 //----------------------------------------------------------
 // **************** Trust but verify -----------------------
 //----------------------------------------------------------
@@ -123,9 +152,9 @@ try {
 } catch (e: any) {
   console.log("5. Caught expected mutation error:", e.message);
 }
-
-// Verifyig the method behavior remains unchanged
+// Verifying it stays the same
 console.log("5. Post-mutation check :", greeterInstance.greet());
+
 
 
 
