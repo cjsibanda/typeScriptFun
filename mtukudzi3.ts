@@ -67,9 +67,28 @@ function displayTuple(input: [string, number]): string {
   return `The value for ${label} is ${value}.`
 }
 
+/*************************************************************************
+* -------------- Decorators (5. Meta-programming) ----------------
+* Using Method Decorators to modify class behavior to design time.
+* The @readonly decorator sets the property descriptor's writable
+* flag tp false. preventing accidental or malicious method reassignments
+**************************************************************************/
+function readonly(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+  descriptor.writable = false;
+}
 
+class Greeter {
+  greeting: string;
 
+  constructor(message: string) {
+    this.greeting = message;
+  }
 
+  @readonly
+  greet() {
+    return "Hello, " + this.greeting;
+  }
+}
 
 //----------------------------------------------------------
 // **************** Trust but verify -----------------------
@@ -90,4 +109,7 @@ console.log("Start small. Ship something.");
 //4. Testing Tuples
 // Note: Notice values are passes as a strict tuple array `[string, number]`
 console.log(displayTuple(["Age", 99])); //Expect: The value for Age is 99
+
+
+
 
