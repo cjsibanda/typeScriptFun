@@ -206,6 +206,12 @@ console.log("&. Initial point:", initialPoint);
 const updatedPoint = updatedCoordintates(initialPoint, (y: 50)):
 console.log("7. Updated point : ", updatedPoint); // Expect: {x: 10, y: 50}
 
+//8. Testing Required Utility Type
+console.log("--- 8. Testing Required Type ---");
+const draftPoint: EditablePoint = {x: 15}; //Missing y and label (optional)
+const readyPoint = finalizePoint(draftPoint);
+console.log("8. Finalized point (all properties mandatory):", readyPoint);
+//Expect: {x: 15, y: 0, label: "Default Point" }
 
 
 
