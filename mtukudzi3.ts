@@ -119,7 +119,7 @@ class Calculator {
 }
 
 /*************************************************************************
-* -------------- Utility Types (7. Types) ----------------
+* -------------- updatedCoordnates (7. Utility Types) ----------------
 * Using TypeScript's built-in Partial<T> utility to make all
 * ..properties of an existing type optional. It's ideal for
 * patch/update operations where only a subset of properties is passed
@@ -133,6 +133,29 @@ function updatedCoordinates(current: coordinates, updates: Partial<Coordinates>)
   return {... current, updates};
 }
 
+/***********************************************************************
+* --------------------- finalizePoint (8. Utility Types) ------------------
+* Using TypeScript's built-in Required<T> utility type to reverse 
+* Partial<T>, making sure all optional properties of an existing 
+* ... type become mandatory. This guarantees data completeness before
+* final processing or persistence.
+***********************************************************************/
+type EditablePoint = {
+  x?: number;
+  y?: number;
+  label?: string;
+};
+
+type FinalizedPoint = Required<EditablePoint>
+
+function finalizePoint(point: EditablePoint): FinalizedPoint {
+  //filling in defaults to satisfy the Required<T> contract
+  return {
+    x: point.x ?? 0,
+    y: point.y ?? 0,
+    label: point.label ?? "Default Point"
+  };
+}
 
 //----------------------------------------------------------
 // **************** Trust but verify -----------------------
