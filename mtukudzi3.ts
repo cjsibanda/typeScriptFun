@@ -118,6 +118,21 @@ class Calculator {
   }
 }
 
+/*************************************************************************
+* -------------- Utility Types (7. Types) ----------------
+* Using TypeScript's built-in Partial<T> utility to make all
+* ..properties of an existing type optional. It's ideal for
+* patch/update operations where only a subset of properties is passed
+**************************************************************************/
+interface Coordinates {
+  x: number;
+  y: number;
+}
+
+function updatedCoordinates(current: coordinates, updates: Partial<Coordinates>): Coordinates {
+  return {... current, updates};
+}
+
 
 //----------------------------------------------------------
 // **************** Trust but verify -----------------------
@@ -159,6 +174,7 @@ console.log("5. Post-mutation check :", greetInstance.greet());
 console.log("--- 6. Testing Log Decorator ---");
 const calc = new Calculator();
 const sum = calc.add(5, 7);
+
 
 
 
