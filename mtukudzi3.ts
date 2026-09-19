@@ -174,6 +174,15 @@ console.log("5. Post-mutation check :", greetInstance.greet());
 console.log("--- 6. Testing Log Decorator ---");
 const calc = new Calculator();
 const sum = calc.add(5, 7);
+//7. Testing Partial Utility Type
+console.log("---7. Testing Partial Utility Type ---");
+const initialPoint: Coordinates = {x: 10, y: 20};
+console.log("&. Initial point:", initialPoint);
+
+//Passing a partial update containing only 'y'
+const updatedPoint = updatedCoordintates(initialPoint, (y: 50)):
+console.log("7. Updated point : ", updatedPoint); // Expect: {x: 10, y: 50}
+
 
 
 
