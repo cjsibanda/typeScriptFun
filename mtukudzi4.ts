@@ -73,7 +73,7 @@ console.log("--- 1. Safari tour Initialization & Verification ---");
 
 //If the line below is uncommented TypeScript will throw a compile error
 // "Cannot create an instance of an abstract class"
-// const smallAnimal = new SafarIAnimal("Small", 7, "Wild");
+// const smallAnimal = new SafariAnimal("Small", 7, "Wild");
 
 // 2. Instantiating Concrete Subclasses
 const sibanda = new Lion("Sibanda", 7, "Hwange Plains", 12);
@@ -95,13 +95,13 @@ console.log("Behavior:", ndlovu.sprayWater()); //Unique subclass method
 
 //5. Testing Polymorphism
 console.log("--- 2. Testing Polymorphism (Array of SafariAnimals) ---");
-const safariPArk: safariAnimal[] = [sibanda, ndlovu];
+const safariPark: SafariAnimal[] = [sibanda, ndlovu];
 
 safariPark.forEach((animal, index) => {
   console.log(`Tour Stop [${index + 1}]: ${animal.name}`);
-  console.log(` -> Habitat: ${animal.descibeHabitat()}`);
+  console.log(` -> Habitat: ${animal.describeHabitat()}`);
   console.log(` -> Sound: ${animal.makeCall()}`);
-  console.log(` -> Briefng: ${animal.getTourSafteyBriefing()} `);
+  console.log(` -> Briefing: ${animal.getTourSafetyBriefing()} `);
 });
 
 
