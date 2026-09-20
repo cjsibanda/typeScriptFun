@@ -20,7 +20,7 @@ abstract class SafariAnimal {
   abstract makeCall(): string;
 
   //Abstract method -> Every subclass defines how its tours operate
-  abstract getTourSafetyBfiefing(): string;
+  abstract getTourSafetyBriefing(): string;
 }
 
 /**************************************************************************
@@ -36,7 +36,7 @@ class Lion extends SafariAnimal {
     return "Roars loudly across Hwange!"
   }
 
-  getToursSafetyBriefing(): string {
+  getTourSafetyBriefing(): string {
     return `Stay inside the Toyota Land Cruiser at all times. Pride size: ${this.prideSize} lions nearby.`;
   }
 
