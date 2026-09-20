@@ -44,3 +44,24 @@ class Lion extends SafariAnimal {
     return `${this.name} is leading a pride hunt in ${this.territory}.`
   }
 }
+
+/**************************************************************************
+* --------------- Elephant (3. Concrete subclass B) ------------------------
+* Concrete implementation of a Safari Animal representing an Elephant
+***************************************************************************/
+class Elephant extends SafariAnimal {
+  constructor(name: string, age: number, territory: string, private tuskLengthMeters: number) {
+    super(name, age, territory);
+  }
+
+  makeCall(): string {
+    return "Trumpets loudly and rumbles across the savannah!";
+  }
+
+  getTourSafetyBriefing(): string {
+    return `Maintain a safe distance and don't touch the Elephant! ... Tusk reference: ${this.tuskLengthMeters}m.`;
+  }
+}
+
+
+
