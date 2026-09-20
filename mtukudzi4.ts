@@ -22,3 +22,25 @@ abstract class SafariAnimal {
   //Abstract method -> Every subclass defines how its tours operate
   abstract getTourSafetyBfiefing(): string;
 }
+
+/**************************************************************************
+* --------------- Lion (2. Concrete subclass A) ---------------------------
+* Concrete implementation of a Safari Animal representing the African Lion
+***************************************************************************/
+class Lion extends SafariAnimal {
+  constructor(name: string, age: number, territory: string, private prideSize: number) {
+    super(name, age, territory);
+  }
+
+  makeCall(): string {
+    return "Roars loudly across Hwange!"
+  }
+
+  getToursSafetyBriefing(): string {
+    return `Stay inside the Toyota Land Cruiser at all times. Pride size: ${this.prideSize} lions nearby.`;
+  }
+
+  public hunt(): string {
+    return `${this.name} is leading a pride hunt in ${this.territory}.`
+  }
+}
