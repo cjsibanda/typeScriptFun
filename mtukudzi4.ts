@@ -82,9 +82,27 @@ const ndlovu = new Elephant("Ndlovu", 25, "Kruger Park", 1.5);
 //3. Testing Lion Methods
 console.log("--- Lion Operations ---");
 console.log(sibanda.describeHabitat()); //Inherited shared logic
-console.log("Call:", sibanda.makeCall()); //Implement abstract method
+console.log("Call:", sibanda.makeCall()); //Implemented abstract method
 console.log("Safety:", sibanda.getTourSafetyBriefing()); //Implemented abstract method
 console.log("Behavior:", sibanda.hunt()); //Unique subclass method
+
+//4. Testing Elephant Methods
+console.log("--- Elephant Operations ---");
+console.log(ndlovu.describeHabitat()); // Inherited shared logic
+console.log("Call:", ndlovu.makeCall()); // Implement abstract method
+console.log("Safety:", ndlovu.getTourSafetyBriefing()); // Implemented abstract method
+console.log("Behavior:", ndlovu.sprayWater()); //Unique subclass method
+
+//5. Testing Polymorphism
+console.log("--- 2. Testing Polymorphism (Array of SafariAnimals) ---");
+const safariPArk: safariAnimal[] = [sibanda, ndlovu];
+
+safariPark.forEach((animal, index) => {
+  console.log(`Tour Stop [${index + 1}]: ${animal.name}`);
+  console.log(` -> Habitat: ${animal.descibeHabitat()}`);
+  console.log(` -> Sound: ${animal.makeCall()}`);
+  console.log(` -> Briefng: ${animal.getTourSafteyBriefing()} `);
+});
 
 
 
