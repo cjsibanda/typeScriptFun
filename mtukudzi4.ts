@@ -4,7 +4,7 @@
 /*******************************************************************
 * ----------- SafariAnimal (1. Abstract Classes) ------------------
 * Abstract classes are like blueprints for related subclasses.
-* They cannot be instatiated directly, but they allow you to share...
+* They cannot be instantiated directly, but they allow you to share...
 * common properties and methods. 
 * Subclasses implement specific behavior (abstract methods)
 *******************************************************************/
@@ -20,5 +20,5 @@ abstract class SafariAnimal {
   abstract makeCall(): string;
 
   //Abstract method -> Every subclass defines how its tours operate
-  abstract getTourSaftyBfiefing(): string;
+  abstract getTourSafetyBfiefing(): string;
 }
