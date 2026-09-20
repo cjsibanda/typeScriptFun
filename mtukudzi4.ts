@@ -73,17 +73,17 @@ console.log("--- 1. Safari tour Initialization & Verification ---");
 
 //If the line below is uncommented TypeScript will throw a compile error
 // "Cannot create an instance of an abstract class"
-// const smallAnimal = new Safari("Small", 7, "Wild");
+// const smallAnimal = new SafarIAnimal("Small", 7, "Wild");
 
 // 2. Instantiating Concrete Subclasses
 const sibanda = new Lion("Sibanda", 7, "Hwange Plains", 12);
-const Nnlovu = new Elephant("Ndlovu", 25, "Kruger Park", 1.5);
+const ndlovu = new Elephant("Ndlovu", 25, "Kruger Park", 1.5);
 
 //3. Testing Lion Methods
 console.log("--- Lion Operations ---");
 console.log(sibanda.describeHabitat()); //Inherited shared logic
 console.log("Call:", sibanda.makeCall()); //Implement abstract method
-console.log("Safety:" sibanda.getTourSafetyBriefing()); //Implemented abstract method
+console.log("Safety:", sibanda.getTourSafetyBriefing()); //Implemented abstract method
 console.log("Behavior:", sibanda.hunt()); //Unique subclass method
 
 
