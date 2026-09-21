@@ -63,6 +63,24 @@ class Elephant extends SafariAnimal {
   }
 }
 
+/**************************************************************************
+* --------------- Springbok (3. Concrete subclass C) ------------------------
+* Concrete implementation of a Safari Animal representing an Springbok
+***************************************************************************/
+class Springbok extends SafariAnimal {
+  constructor(name: string, age: number, territory: string, private speed: number) {
+    super(name, age, territory);
+  }
+
+  makeCall(): string {
+    retrun "Leaps high into the air!";
+  }
+
+  getTourBiefing(): string {
+    return `The Sprngboks top speed is: ${this.speed}`.;
+  }
+}
+
 
 /******************************************************************************
 * ----------------------------- Trust but Verify ------------------------------
