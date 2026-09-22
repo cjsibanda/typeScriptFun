@@ -93,9 +93,9 @@ safariPark.forEach(animal => {
 const ticket: SafariBooking = { kind: "gameDrive", durationHours: 4};
 console.log("3. Calculated Booking Cost ($):", getBookingCost(ticket));
 
-/ 4. Testing Readonly Utility Type
+// 4. Testing Readonly Utility Type
 const currentTour: ReadonlyTour = { camp: "Camp Nomadic", maxGuests: 6 };
-// currentTour.maxGuests = 10; // Error: Cannot assign because it is read-only
+// currentTour.maxGuests = 10; // --> Error: Cannot assign because it is read-only
 console.log("4. Readonly Tour Camp:", currentTour.camp);
 
 
