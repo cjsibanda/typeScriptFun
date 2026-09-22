@@ -32,9 +32,36 @@ class Elephant extends SafariAnimal {
   }
 
 
+/********************************************************************
+* 3. Discriminated Unions
+********************************************************************/
+interface GameDrive {
+  kind: "gameDrive";
+  durationHours: number;
+}
+
+interface NightSafari {
+  kind: "nightSafari";
+  spotlightEquipped: boolean;
+}
+
+type SafariBooking = GameDrive | NightSafari;
+
+
+function getBookingCost(booking: SafariBooking): number {
+  switch (booking.kind) {
+    case "gameDrive":
+      return booking.durationHours * 100;
+    case "nightSafari":
+      return booking.spotlightEquipped ? 250 : 200;
+  }
+}
+
+
 
 
 //------------------------------------------------------------------
 // *********************** Trust But Verify ************************
 //------------------------------------------------------------------
 console.log("=== SAFARI PARK VERIFICATION ===");
+
