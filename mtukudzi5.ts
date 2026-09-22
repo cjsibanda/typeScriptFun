@@ -31,6 +31,12 @@ class Elephant extends SafariAnimal {
     }
   }
 
+class Springbok extends SafariAnimal {
+  makeCall(): string {
+    return "Grunts and leaps through the air!";
+  }
+}
+
 
 /********************************************************************
 * 3. Discriminated Unions
@@ -84,6 +90,7 @@ console.log("1. Tour Group Tuple:", group);
 const safariPark: SafariAnimal[] = [
   new Lion("Simba", "Hwange Plains"),
   new Elephant("Jumbo", "Kruger Park")
+  new Springbok("Xholiso", "Matobo Park")
 ];
 safariPark.forEach(animal => {
   console.log(`2. ${animal.name}'s call`, animal.makeCall());
