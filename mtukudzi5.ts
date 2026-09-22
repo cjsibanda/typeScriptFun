@@ -65,3 +65,29 @@ function getBookingCost(booking: SafariBooking): number {
 //------------------------------------------------------------------
 console.log("=== SAFARI PARK VERIFICATION ===");
 
+//1. Testing Generics & Tuples
+const group = wrapInTourGroup("Guide Sibanda", {guestName: "CJ", passID: 404});
+console.log("1. Tour Group Tuple:", group);
+
+//2. Testing Polymorphism
+const safariPark: SafariAnimal[] = [
+  new Lion("Simba", "Hwange Plains"),
+  new Elephant("Jumbo", "Kruger Park")
+];
+safariPark.forEach(animal => {
+  console.log(`2. ${animal.name}'s call`, animal.makeCall());
+});
+
+//3. Testing Discriminated Unions
+const ticket: SafariBooking = { kind: "gameDrive", durationHours: 4};
+console.log("3. Calculated Booking Cost ($):", getBookingCost(ticket));
+
+
+
+
+
+
+
+
+
+
