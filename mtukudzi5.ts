@@ -82,6 +82,17 @@ function getEntityProperty<T, K extends keyof T>(entity: T, key: K): T[K] {
   return entity[key];
 }
 
+/**********************************************************************
+* 
+**********************************************************************/
+interface SafariVehicle {
+  registrationNumber: string;
+  model: string;
+  capacity: number;
+  lastServiceDate: string;
+  inService: boolean;
+}
+
 
 //------------------------------------------------------------------
 // *********************** Trust But Verify ************************
@@ -95,7 +106,7 @@ console.log("1. Tour Group Tuple:", group);
 //2. Testing Polymorphism
 const safariPark: SafariAnimal[] = [
   new Lion("Simba", "Hwange Plains"),
-  new Elephant("Jumbo", "Kruger Park")
+  new Elephant("Jumbo", "Kruger Park"),
   new Springbok("Xholiso", "Matobo Park")
 ];
 safariPark.forEach(animal => {
@@ -111,7 +122,19 @@ const currentTour: ReadonlyTour = { camp: "Camp Nomadic", maxGuests: 6 };
 // currentTour.maxGuests = 10; // --> Error: Cannot assign because it is read-only
 console.log("4. Readonly Tour Camp:", currentTour.camp);
 
+// 5. Testing Generic Constraints (getEntityProperty)
+const vehicle: SafariVehicle = {
+  registrationNumber: "ZW-ABC-1456",
+  model: "Toyota Land Cruiser",
+  capacity: 9,
+  lastServicedDate: "2026-08-15",
+  inService: true
+};
 
+const modelName = getEntityProperty(vehicle, "model");
+//const invalidKey = getEntityProperty(vehicle, "color");
+//^^^Error: Argument of type '"color"' is not assignable to keyof SafariVehicle
+console.log("5. Extracted Vehicle Model:", modelName);
 
 
 
