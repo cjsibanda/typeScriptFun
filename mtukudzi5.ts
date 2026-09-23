@@ -109,7 +109,7 @@ function getFeedingSchedule(diet: AnimalDiet): string {
 * These are strongly typed strings formatted formmatted specifically
 * ....for safari  tracking IDs and operational locations.
 ***********************************************************************************/
-type Sector =  "Highlands" | "Borrowdale" | "Burnside" | "Hillside";
+type Sector =  "Highlands" | "Borrowdale" | "Burnside" | "Riverside";
 type ZoneCode = `ZONE-${Sector}`; //Evaluates to "Zone-Higlands" | "ZONE-Borrowdale" | ..,
 
 type RangerID = `RNR-${number}`; //e.g., "RNR-101"
@@ -183,6 +183,36 @@ const modelName = getEntityProperty(vehicle, "model");
 //const invalidKey = getEntityProperty(vehicle, "color");
 //^^^Error: Argument of type '"color"' is not assignable to keyof SafariVehicle
 console.log("5. Extracted Vehicle Model:", modelName);
+
+// 6. Testing Exhaustiveness Checking (never type)
+const lionDiet: AnimalDiet = "carnivore";
+console.log("6. Feeding Schedule:", getFeedingSchedule(lionDiet));
+
+// 7. Testing Template Literal Types
+const station: RangerStation = {
+  id: "RNR-404",
+  location: "ZONE-Riverside"
+  //location: "ZONE-Makokoba" 
+  // ^^^ throws error: '"ZONE-Makokoba"' is not assignable to type 'ZoneCode'
+};
+console.log(`7. Ranger Station registered: ${station.id} in ${station.location}`);
+
+//8. Testing Utility Types (Partial, Pick, Omit)
+const updatePatch: VehicleUpdatePayload = {
+  inService: false //Only supplying the field that changed
+};
+
+const publicInfo: vehiclePublicSummary = {
+  model: vehicle.model,
+  capacity: vehicle.capacity
+};
+
+console.log("8. Vehicle Patch Payload:", updatePatch);
+console.log("8. Public summary Card:", publicInfo);
+
+
+
+  
 
 
 
