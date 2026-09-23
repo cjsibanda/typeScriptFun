@@ -73,8 +73,14 @@ interface TourConfig {
 
 type ReadonlyTour = Readonly<TourConfig>;
 
-
-
+/*************************************************************************************
+* 5. Generic Constraints & Property Lookup (extends keyof)
+* It makes sure we can safely extract a property from a safari entity
+* ... without risking accessing an undefined key.
+*************************************************************************************/
+function getEntityProperty<T, K extends keyof T>(entity: T, key: K): T[K] {
+  return entity[key];
+}
 
 
 //------------------------------------------------------------------
