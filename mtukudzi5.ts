@@ -82,16 +82,64 @@ function getEntityProperty<T, K extends keyof T>(entity: T, key: K): T[K] {
   return entity[key];
 }
 
-/**********************************************************************
-* 
-**********************************************************************/
+/*********************************************************************************
+* 6. Thorough/exhaustive Checking & Strict Type Guards
+* To make sure that every possible animal classification is handled in switch
+* If a new category is added to the union later, TS throws a compile error
+***********************************************************************************/
+type AnimalDiet = "carnivore" | "herbivore" | "omnivore";
+
+function getFeedingSchedule(diet: AnimalDiet): string {
+  switch (diet) {
+    case "carnivore":
+      return "Feed twice daily - raw meat.";
+    case "herbivore":
+      return "Continuous grazing access until 08:00.";
+    case "omnivore":
+      return "Root/fruit and protein supplement.";
+    default:
+      //If diet is exhaustive/thorough, 'diet' is narrowed to type never here
+      const _exhaustiveCheck: never = diet;
+      return _exhaustiveCheck;
+  }
+}
+
+/***********************************************************************************
+* 7. Going over Template Literal types
+* These are strongly typed strings formatted formmatted specifically
+* ....for safari  tracking IDs and operational locations.
+***********************************************************************************/
+type Sector =  "Highlands" | "Borrowdale" | "Burnside" | "Hillside";
+type ZoneCode = `ZONE-${Sector}`; //Evaluates to "Zone-Higlands" | "ZONE-Borrowdale" | ..,
+
+type RangerID = `RNR-${number}`; //e.g., "RNR-101"
+
+interface RangerStation {
+  id: RangerID;
+  location: ZoneCode;
+}
+
+
+/********************************************************************************
+* 8 Utility Types (Partial, Pick, Omit)
+* Modeling partial updates, lean summaries, and sanitized records.
+********************************************************************************/
 interface SafariVehicle {
   registrationNumber: string;
   model: string;
   capacity: number;
-  lastServiceDate: string;
+  lastServicedDate: string;
   inService: boolean;
 }
+
+//Partial<T>: All fields optional for update ops
+type VehicleUpdatePayload = Partial<SafariVehicle>;
+
+//Pick<T, K>: Extracts only specific properties for summary 
+type VehiclePublicSummary = Pick<SafariVehicle, "model" | "capacity">;
+
+//Omit<T. K>: Strips out sensitive or internal properties
+type ServiceLogView = Omit<SafariVehicle, "inService">;
 
 
 //------------------------------------------------------------------
