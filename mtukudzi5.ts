@@ -158,6 +158,21 @@ enum BookingTier {
   Private = "Chartered Exclusive"
 }
 
+/*************************************************************************
+* 10. Typeof Type Operator
+* Cuptures the static type directly from an existing runtime configuration
+* ... object so that we don't have to duplicate interfce definition.
+**************************************************************************/
+const baselineExpedition = {
+  expeditioLeader: "Chief Ranger Sibanda",
+  baseCamp: "Hwange Safari Lodge",
+  maxAllottedKilometers: 150,
+  emergencyRadioChannel: 10
+};
+
+//To automatically derive the type from the runtime object above ^^^
+type ExpeditionManifest = typeof baselineExpedition;
+
 
 //------------------------------------------------------------------
 // *********************** Trust But Verify ************************
@@ -232,6 +247,14 @@ const chosenGate: ParkGate = ParkGate.HwangeMain;
 const selectedTier: BookingTier.VIP;
 console.log(`9. Gate Entry Point: ${chosenGate} | Tier: ${selectedTier}`);
 
+//10. Testing Typeof Type Operator
+const activeManifest: ExpeditionManifest = {
+  expeditionLeader: "Guide Sibanda",
+  baseCamp: "Main Camp Testing Village",
+  maxAllotedKilometers: 200,
+  emergencyRadioChannel: 7
+};
+console.log("10. Derived Expedition Manifest:", activeManifest);
 
 
   
