@@ -202,7 +202,7 @@ const updatePatch: VehicleUpdatePayload = {
   inService: false //Only supplying the field that changed
 };
 
-const publicInfo: vehiclePublicSummary = {
+const publicInfo: VehiclePublicSummary = {
   model: vehicle.model,
   capacity: vehicle.capacity
 };
