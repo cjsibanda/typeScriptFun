@@ -164,7 +164,7 @@ enum BookingTier {
 * ... object so that we don't have to duplicate interfce definition.
 **************************************************************************/
 const baselineExpedition = {
-  expeditioLeader: "Chief Ranger Sibanda",
+  expeditionLeader: "Chief Ranger Sibanda",
   baseCamp: "Hwange Safari Lodge",
   maxAllottedKilometers: 150,
   emergencyRadioChannel: 10
@@ -172,6 +172,18 @@ const baselineExpedition = {
 
 //To automatically derive the type from the runtime object above ^^^
 type ExpeditionManifest = typeof baselineExpedition;
+
+/*******************************************************************
+* 11. Iterator and Generators (`function*` and `yield`)
+* Creating a custom iterable routine to yield sequenctial game drive
+* There are checkpoints across the park
+********************************************************************/
+function generateHwangeRoute(): Generator<string, void, unknown> {
+  yield "Checkpoint 1: Main Camp Waterhole (Elephants & Zebras)";
+  yield "Checkpoint 2: Nyamandlovu Pan (A Sunset Vantage Point)";
+  yield "Checkpoint 3: Mufakose Escarpment (Lions & Leopards)";
+  yield "Final Stop: Kuwadzana Camp Boma (Nightfire & Braai)";
+}
 
 
 //------------------------------------------------------------------
@@ -244,19 +256,24 @@ console.log("8. Public summary Card:", publicInfo);
 
 //9. Testing Enums
 const chosenGate: ParkGate = ParkGate.HwangeMain;
-const selectedTier: BookingTier.VIP;
+const selectedTier: BookingTier.VIP = BookingTier.VIP;
 console.log(`9. Gate Entry Point: ${chosenGate} | Tier: ${selectedTier}`);
 
 //10. Testing Typeof Type Operator
 const activeManifest: ExpeditionManifest = {
   expeditionLeader: "Guide Sibanda",
   baseCamp: "Main Camp Testing Village",
-  maxAllotedKilometers: 200,
+  maxAllottedKilometers: 200,
   emergencyRadioChannel: 7
 };
 console.log("10. Derived Expedition Manifest:", activeManifest);
 
-
+//11. Testing Iterators and Generators
+console.log("11. Executing Hwange Game Drive Route Iteration:");
+const routeIterator = generateHwangeRoute();
+for (const waypoint of routeIterator) {
+  console.log(` -> Navigating: ${waypoint}`);
+}
   
 
 
