@@ -148,31 +148,31 @@ type ServiceLogView = Omit<SafariVehicle, "inService">;
 console.log("=== SAFARI PARK VERIFICATION ===");
 
 //1. Testing Generics & Tuples
-const group = wrapInTourGroup("Guide Sibanda", {guestName: "CJ", passID: 404});
+const group = wrapInTourGroup("Guide Sibanda", {guestName: "CJ", passID: 504});
 console.log("1. Tour Group Tuple:", group);
 
 //2. Testing Polymorphism
 const safariPark: SafariAnimal[] = [
   new Lion("Simba", "Hwange Plains"),
   new Elephant("Jumbo", "Kruger Park"),
-  new Springbok("Xholiso", "Matobo Park")
+  new Springbok("Xholiso", "Matopos Hills")
 ];
 safariPark.forEach(animal => {
   console.log(`2. ${animal.name}'s call`, animal.makeCall());
 });
 
 //3. Testing Discriminated Unions
-const ticket: SafariBooking = { kind: "gameDrive", durationHours: 4};
+const ticket: SafariBooking = { kind: "gameDrive", durationHours: 5};
 console.log("3. Calculated Booking Cost ($):", getBookingCost(ticket));
 
 // 4. Testing Readonly Utility Type
-const currentTour: ReadonlyTour = { camp: "Camp Nomadic", maxGuests: 6 };
+const currentTour: ReadonlyTour = { camp: "Camp Mbare", maxGuests: 6 };
 // currentTour.maxGuests = 10; // --> Error: Cannot assign because it is read-only
 console.log("4. Readonly Tour Camp:", currentTour.camp);
 
 // 5. Testing Generic Constraints (getEntityProperty)
 const vehicle: SafariVehicle = {
-  registrationNumber: "ZW-ABC-1456",
+  registrationNumber: "ZW-ABC-1468",
   model: "Toyota Land Cruiser",
   capacity: 9,
   lastServicedDate: "2026-08-15",
@@ -190,7 +190,7 @@ console.log("6. Feeding Schedule:", getFeedingSchedule(lionDiet));
 
 // 7. Testing Template Literal Types
 const station: RangerStation = {
-  id: "RNR-404",
+  id: "RNR-505",
   location: "ZONE-Riverside"
   //location: "ZONE-Makokoba" 
   // ^^^ throws error: '"ZONE-Makokoba"' is not assignable to type 'ZoneCode'
