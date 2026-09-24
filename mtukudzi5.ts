@@ -141,6 +141,23 @@ type VehiclePublicSummary = Pick<SafariVehicle, "model" | "capacity">;
 //Omit<T. K>: Strips out sensitive or internal properties
 type ServiceLogView = Omit<SafariVehicle, "inService">;
 
+/************************************************************************
+* 9. Enums (for Constant Maps)
+* Defining the fixed operational constants park entry gates/regions
+************************************************************************/
+enum ParkGate {
+  HwangeMain = "Main Gate - Hwange",
+  Mufakose = "Mufakose Camp",
+  Kuwadzana = "Kuwadzana Camp",
+  MabvukuMain = "Kezi Gate - Mabvuku"
+}
+
+enum BookingTier {
+  Standard = "Standard Game View",
+  VIP = "Luxury Photographic Safari",
+  Private = "Chartered Exclusive"
+}
+
 
 //------------------------------------------------------------------
 // *********************** Trust But Verify ************************
@@ -209,6 +226,11 @@ const publicInfo: VehiclePublicSummary = {
 
 console.log("8. Vehicle Patch Payload:", updatePatch);
 console.log("8. Public summary Card:", publicInfo);
+
+//9. Testing Enums
+const chosenGate: ParkGate = ParkGate.HwangeMain;
+const selectedTier: BookingTier.VIP;
+console.log(`9. Gate Entry Point: ${chosenGate} | Tier: ${selectedTier}`);
 
 
 
