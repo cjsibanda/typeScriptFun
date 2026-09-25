@@ -185,6 +185,14 @@ function generateHwangeRoute(): Generator<string, void, unknown> {
   yield "Final Stop: Kuwadzana Camp Boma (Nightfire & Braai)";
 }
 
+/********************************************************************************
+* 12. Conditional Types
+* Expresses non-linear type relationships using a ternary condition:
+* T extends U ? TrueType: FalseType 
+*********************************************************************************/
+type IsApexPredator<T> = T extends "Lion" | "Leopard" | "WildDog" ? true : false;
+type SimbaPredatorCheck = IsApexPredator<"Lion">; //Evaluates to true
+type SpringbokPredatorCheck = ISApexPRedator<"Springbok">; //Evaluates to false
 
 //------------------------------------------------------------------
 // *********************** Trust But Verify ************************
@@ -274,6 +282,13 @@ const routeIterator = generateHwangeRoute();
 for (const waypoint of routeIterator) {
   console.log(` -> Navigating: ${waypoint}`);
 }
+
+//12. Testing conditional Types
+const lionCheck: SimbaPredatorCheck = true;
+const springbokCheck: springbokPredatorCheck = false;
+console.log(`12. Conditional Type Check -> Is Lion an apex predator? ${lionCheck}`);
+
+
   
 
 
