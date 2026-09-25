@@ -192,7 +192,28 @@ function generateHwangeRoute(): Generator<string, void, unknown> {
 *********************************************************************************/
 type IsApexPredator<T> = T extends "Lion" | "Leopard" | "WildDog" ? true : false;
 type SimbaPredatorCheck = IsApexPredator<"Lion">; //Evaluates to true
-type SpringbokPredatorCheck = ISApexPRedator<"Springbok">; //Evaluates to false
+type SpringbokPredatorCheck = ISApexPredator<"Springbok">; //Evaluates to false
+
+/***********************************************************************************
+* 13. Mapped Types (Custom Property Transformers)
+* Iterates over keys of an existing type using `keyof` and `in`
+* To build transformed new types dynamically.
+************************************************************************************/
+interface GuestBookingForm {
+  fullName: string;
+  age: number;
+  passportNumber: string;
+}
+
+// Custom Mapped Type: Transformed every property of T into an error tracking string
+type ValidationErrors<T> = {
+  [K in keyof T]?: string;
+};
+
+const bookingValidationState: ValidationErrors<GuestBookingForm> = {
+  passportNumber: "Passport expiry date is within 6 months!"
+};
+
 
 //------------------------------------------------------------------
 // *********************** Trust But Verify ************************
@@ -285,8 +306,11 @@ for (const waypoint of routeIterator) {
 
 //12. Testing conditional Types
 const lionCheck: SimbaPredatorCheck = true;
-const springbokCheck: springbokPredatorCheck = false;
+const springbokCheck: SpringbokPredatorCheck = false;
 console.log(`12. Conditional Type Check -> Is Lion an apex predator? ${lionCheck}`);
+
+//13. Testing Custom Mapped Types
+console.log("13. Form Validation Errors Object:", bookingValidationState);
 
 
   
