@@ -214,7 +214,19 @@ const bookingValidationState: ValidationErrors<GuestBookingForm> = {
   passportNumber: "Passport expiry date is within 6 months!"
 };
 
+/****************************************************************************************
+* 14. Modules (`export` & `import`)
+* Encapsulates code into isolated scope. (Simulated in a module environment)
+*****************************************************************************************/
+export interface ParkAsset {
+  assetId: string;
+  location: string;
+}
 
+export function logAssetDeployment(asset: ParkAsset): string {
+  return `Asset ${asset.assetId} deployment successfully to ${asset.location}.`;
+}
+  
 //------------------------------------------------------------------
 // *********************** Trust But Verify ************************
 //------------------------------------------------------------------
@@ -312,8 +324,11 @@ console.log(`12. Conditional Type Check -> Is Lion an apex predator? ${lionCheck
 //13. Testing Custom Mapped Types
 console.log("13. Form Validation Errors Object:", bookingValidationState);
 
+//14. Testing Module Exports/Imports
+const testAsset: ParkAsset = {assetID: "AST-992", location: "Hwange Gate 2"};
+console.log("14. Module Function Test:", logAssetDeployment(testAsset));
 
-  
+
 
 
 
