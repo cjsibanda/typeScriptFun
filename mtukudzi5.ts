@@ -192,7 +192,7 @@ function generateHwangeRoute(): Generator<string, void, unknown> {
 *********************************************************************************/
 type IsApexPredator<T> = T extends "Lion" | "Leopard" | "WildDog" ? true : false;
 type SimbaPredatorCheck = IsApexPredator<"Lion">; //Evaluates to true
-type SpringbokPredatorCheck = ISApexPredator<"Springbok">; //Evaluates to false
+type SpringbokPredatorCheck = IsApexPredator<"Springbok">; //Evaluates to false
 
 /***********************************************************************************
 * 13. Mapped Types (Custom Property Transformers)
@@ -236,7 +236,7 @@ function RangerLogged(target: any, propertyKey: string, descriptor: PropertyDesc
   const originalMethod = descriptor.value;
   descriptor.value = function (...args: any[]) {
     console.log(`[RANGER AUDIT LOG] Executing action: '${propertyKey}' with arguments:`, args);
-    const result = orignalMethod.apply(this, args);
+    const result = originalMethod.apply(this, args);
     console.log(`[RANGER AUDIT LOG] Action '${propertyKey}' completed successfully.`);
     return result;
   };
@@ -348,7 +348,7 @@ console.log(`12. Conditional Type Check -> Is Lion an apex predator? ${lionCheck
 console.log("13. Form Validation Errors Object:", bookingValidationState);
 
 //14. Testing Module Exports/Imports
-const testAsset: ParkAsset = {assetID: "AST-992", location: "Hwange Gate 2"};
+const testAsset: ParkAsset = {assetId: "AST-992", location: "Hwange Gate 2"};
 console.log("14. Module Function Test:", logAssetDeployment(testAsset));
 
 //15. Testing Decorators
