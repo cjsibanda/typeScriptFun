@@ -226,7 +226,30 @@ export interface ParkAsset {
 export function logAssetDeployment(asset: ParkAsset): string {
   return `Asset ${asset.assetId} deployment successfully to ${asset.location}.`;
 }
-  
+
+/****************************************************************************************
+* 15. Decorators (Class & Method Metaprogramming)
+* Special declarations attached to classes or methods to modify or log behavior
+* (Requires "experimentalDecorators": true in tsconfig.json)
+****************************************************************************************/
+function RangerLogged(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+  const originalMethod = descriptor.value;
+  descriptor.value = function (...args: any[]) {
+    console.log(`[RANGER AUDIT LOG] Executing action: '${propertyKey}' with arguments:`, args);
+    const result = orignalMethod.apply(this, args);
+    console.log(`[RANGER AUDIT LOG] Action '${propertyKey}' completed successfully.`);
+    return result;
+  };
+  return descriptor;
+}
+
+class RangerOperations {
+  @RangerLogged
+  public dispatchPatrol(sector: string, rangerCount: number): void {
+    console.log(`-> Dispatching ${rangerCount} rangers to secure ${sector}.`);
+  }
+}
+
 //------------------------------------------------------------------
 // *********************** Trust But Verify ************************
 //------------------------------------------------------------------
@@ -327,6 +350,11 @@ console.log("13. Form Validation Errors Object:", bookingValidationState);
 //14. Testing Module Exports/Imports
 const testAsset: ParkAsset = {assetID: "AST-992", location: "Hwange Gate 2"};
 console.log("14. Module Function Test:", logAssetDeployment(testAsset));
+
+//15. Testing Decorators
+const ops = new RangerOperations();
+ops.dispatchPatrol("North Sector", 5);
+
 
 
 
