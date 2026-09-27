@@ -112,7 +112,7 @@ function getFeedingSchedule(diet: AnimalDiet): string {
 }
 
 /***********************************************************************************
-* 7. Going over Template Literal types
+* 7. Template Literal types
 * These are strongly typed strings formatted formmatted specifically
 * ....for safari  tracking IDs and operational locations.
 ***********************************************************************************/
