@@ -116,7 +116,7 @@ function getFeedingSchedule(diet: AnimalDiet): string {
 * These are strongly typed strings formatted formmatted specifically
 * ....for safari  tracking IDs and operational locations.
 ***********************************************************************************/
-type Sector =  "Highlands" | "Borrowdale" | "Burnside" | "Riverside";
+type Sector =  "Highlands" | "Borrowdale" | "Nyamandlovu" | "Riverside";
 type ZoneCode = `ZONE-${Sector}`; //Evaluates to "Zone-Higlands" | "ZONE-Borrowdale" | ..,
 
 type RangerID = `RNR-${number}`; //e.g., "RNR-101"
