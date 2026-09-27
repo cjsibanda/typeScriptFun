@@ -192,6 +192,7 @@ function generateHwangeRoute(): Generator<string, void, unknown> {
   yield "Checkpoint 1: Main Camp Waterhole (Elephants & Zebras)";
   yield "Checkpoint 2: Nyamandlovu Pan (A Sunset Vantage Point)";
   yield "Checkpoint 3: Mufakose Escarpment (Lions & Leopards)";
+  yield "Checkpoint 4: Tsholotsho Hill (Giraffe & Kudus)";
   yield "Final Stop: Kuwadzana Camp Boma (Nightfire & Braai)";
 }
 
@@ -202,7 +203,7 @@ function generateHwangeRoute(): Generator<string, void, unknown> {
 *********************************************************************************/
 type IsApexPredator<T> = T extends "Lion" | "Leopard" | "WildDog" ? true : false;
 type SimbaPredatorCheck = IsApexPredator<"Lion">; //Evaluates to true
-type SpringbokPredatorCheck = IsApexPredator<"Springbok">; //Evaluates to false
+type SpringbokPredatorCheck = IsApexPredator<"Penguin">; //Evaluates to false
 
 /***********************************************************************************
 * 13. Mapped Types (Custom Property Transformers)
@@ -359,12 +360,12 @@ console.log(`12. Conditional Type Check -> Is Lion an apex predator? ${lionCheck
 console.log("13. Form Validation Errors Object:", bookingValidationState);
 
 //14. Testing Module Exports/Imports
-const testAsset: ParkAsset = {assetId: "AST-992", location: "Hwange Gate 2"};
+const testAsset: ParkAsset = {assetId: "AST-992", location: "Hwange Gate 3"};
 console.log("14. Module Function Test:", logAssetDeployment(testAsset));
 
 //15. Testing Decorators
 const ops = new RangerOperations();
-ops.dispatchPatrol("North Sector", 5);
+ops.dispatchPatrol("North Sector", 6);
 
 
 
