@@ -173,8 +173,9 @@ enum BookingTier {
 * ... object so that we don't have to duplicate interfce definition.
 **************************************************************************/
 const baselineExpedition = {
-  expeditionLeader: "Chief Ranger Sibanda",
+  expeditionLeader: "Chief Ranger CJ",
   baseCamp: "Hwange Safari Lodge",
+  hasCoffee: true,
   maxAllottedKilometers: 150,
   emergencyRadioChannel: 10
 };
@@ -335,9 +336,10 @@ console.log(`9. Gate Entry Point: ${chosenGate} | Tier: ${selectedTier}`);
 //10. Testing Typeof Type Operator
 const activeManifest: ExpeditionManifest = {
   expeditionLeader: "Guide Sibanda",
-  baseCamp: "Main Camp Testing Village",
-  maxAllottedKilometers: 200,
-  emergencyRadioChannel: 7
+  baseCamp: "Zambezi Testing Village",
+  hasCoffee: true,
+  maxAllottedKilometers: 250,
+  emergencyRadioChannel: 8
 };
 console.log("10. Derived Expedition Manifest:", activeManifest);
 
