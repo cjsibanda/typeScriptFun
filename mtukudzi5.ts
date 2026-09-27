@@ -94,7 +94,7 @@ function getEntityProperty<T, K extends keyof T>(entity: T, key: K): T[K] {
 * To make sure that every possible animal classification is handled in switch
 * If a new category is added to the union later, TS throws a compile error
 ***********************************************************************************/
-type AnimalDiet = "carnivore" | "herbivore" | "omnivore";
+type AnimalDiet = "carnivore" | "herbivore" | "omnivore" | "likesDietCoke";
 
 function getFeedingSchedule(diet: AnimalDiet): string {
   switch (diet) {
@@ -104,6 +104,8 @@ function getFeedingSchedule(diet: AnimalDiet): string {
       return "Continuous grazing access until 08:00.";
     case "omnivore":
       return "Root/fruit and protein supplement.";
+    case "likesDietCoke"
+      return "Some diet coke and cheese burgers."
     default:
       //If diet is exhaustive/thorough, 'diet' is narrowed to type never here
       const _exhaustiveCheck: never = diet;
