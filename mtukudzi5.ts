@@ -51,7 +51,12 @@ interface NightSafari {
   spotlightEquipped: boolean;
 }
 
-type SafariBooking = GameDrive | NightSafari;
+interface CelebTour {
+  kind: "celebTour";
+  isVIP: boolean;
+}
+
+type SafariBooking = GameDrive | NightSafari | CelebTour;
 
 
 function getBookingCost(booking: SafariBooking): number {
@@ -60,6 +65,8 @@ function getBookingCost(booking: SafariBooking): number {
       return booking.durationHours * 100;
     case "nightSafari":
       return booking.spotlightEquipped ? 250 : 200;
+    case "celebTour":
+      return booking.isVIP ? 450 : 300; 
   }
 }
 
