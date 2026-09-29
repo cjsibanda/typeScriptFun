@@ -50,8 +50,47 @@ class BraaiSpecial extends KitchenMeal {
  }
 }
 
+// 3. Discriminated Unions
+interface DineIn {
+  kind: "dineIn";
+  seats: number;
+}
+
+interface Catering {
+  kind: "catering";
+  seats: number;
+}
+
+interface Delivery {
+  kind: "delivery";
+  distance: number; 
+}
+
+interface Pickup {
+  kind: "pickup";
+  timeRemaining: number;
+  applyDiscount: boolean;
+}
+
+
+type MtukudziOrders =  DineIn | Catering | Delivery |Pickup;
+
+//---->?<----
+function getOrderPoints(order: MtukudziOrder): number {
+  switch(order.kind) {
+    case "dineIn":
+      return order.seats * 20;
+    case "catering":
+      return order.seats * 30;
+    case "delivery":
+      return order.distance * 17.5;
+    case "pickup":
+      return order.applyDiscount ? 30 : 20;
+  }
+}
+
 /////////////////////////////////////////////////////////////////////////////
-//////////////    Trust But Verify     //////////////////////////////////////
+//////////////    Trust But Verify     //////////////////////////////<////////
 /////////////////////////////////////////////////////////////////////////////
 console.log(">>>> MTUKUDZI KITCHEN SYSTEM <<<<<<<<<<");
 
