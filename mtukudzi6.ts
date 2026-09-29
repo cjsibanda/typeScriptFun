@@ -47,6 +47,7 @@ class BraaiSpecial extends KitchenMeal {
 
   bestCook(): string {
     return "Jabulani X.";
+ }
 }
 
 /////////////////////////////////////////////////////////////////////////////
