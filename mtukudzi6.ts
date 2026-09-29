@@ -73,7 +73,7 @@ interface Pickup {
 }
 
 
-type MtukudziOrders =  DineIn | Catering | Delivery |Pickup;
+type MtukudziOrder =  DineIn | Catering | Delivery |Pickup;
 
 //---->?<----
 function getOrderPoints(order: MtukudziOrder): number {
@@ -108,6 +108,10 @@ const testMeal: KitchenMeal[] = [
 testMeal.forEach(meal => {
   console.log(`2. ${meal.name}'s best cook`, meal.bestCook());
 })
+
+// 3. Testing Dicsriminated Unions
+const cjMeal: MtukudiziOrder = {kind: "dineIn", seats: 5};
+console.log("4. Maal Points added:", getOrderPoints(cjMeal));
 
   
   
