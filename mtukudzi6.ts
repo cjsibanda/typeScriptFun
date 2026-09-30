@@ -32,7 +32,7 @@ class MtukudziSpecial extends KitchenMeal {
 
 class VegetarianMeal extends KitchenMeal {
   makeMeal(): string {
-    return "More Broccolli, less sauce!";
+    return "More Broccoli, less sauce!";
   }
 
   bestCook(): string {
@@ -89,6 +89,51 @@ function getOrderPoints(order: MtukudziOrder): number {
   }
 }
 
+
+// 4. Utility Types (Readonly)
+interface FoodieDemo {
+  groupName: string;
+  maxGuests: number;
+}
+
+type ReadonlyDemo = Readonly<FoodieDemo>;
+
+// 5. Exhaustive Checking & Strict Type Guards
+type KitchenArea = "storage" | "cooking" | "food prep" | "braai stand" | "dishwashing"
+
+function getCleaningDetails(area: KitchenArea): string {
+  switch(area) {
+    case "storage":
+      return "wipe storage racks and check expiration dates";
+    case "cooking":
+      return "Degrease Ventilation hoods and drain old oil";
+    case "food prep":
+      return "Scrub cutting boards and sharpen and sanitize knives";
+    case "braai stand":
+      return "Scrape away burnt food particles from grill and griddles";
+    case "dishwashing":
+      return "De-lime the dishwasher and disinfect the waste bins";
+    default:
+      const _exhaustiveCheck: never = area;
+      return _exhaustiveCheck;
+  }
+}
+
+// 6. Generic Constraints and Property Lookup
+function GetEntityProperty<T, K extends keyof T>(entity: T, key: K): T[K] {
+  return entity[key];
+}
+
+// Utility Types (Partial, Pick, Omit)
+interface KitchenAppliance {
+  serialNumber: string;
+  model: string;
+  manufacturer: string; 
+  lastServicedDate: string;
+  inService: boolean;
+}
+
+
 /////////////////////////////////////////////////////////////////////////////
 //////////////    Trust But Verify     //////////////////////////////<////////
 /////////////////////////////////////////////////////////////////////////////
@@ -109,9 +154,29 @@ testMeal.forEach(meal => {
   console.log(`2. ${meal.name}'s best cook`, meal.bestCook());
 })
 
-// 3. Testing Dicsriminated Unions
+// 3. Testing Discriminated Unions
 const cjMeal: MtukudziOrder = {kind: "dineIn", seats: 5};
-console.log("4. Maal Points added:", getOrderPoints(cjMeal));
+console.log("4. Meal Points added:", getOrderPoints(cjMeal));
 
+// 4. Testing Readonly Utility Types:
+const currentTour: ReadonlyDemo = { groupName: "Hillcrest College", maxGuests: 7};
+console.log("4. Readonly Group Foodie Demonstration:", currentTour.groupName);
+
+// 5. Testing Exhaustiveness Checking
+const testArea: KitchenArea = "storage";
+console.log("5. Cleaning Information:", getCleaningDetails(testArea));
   
-  
+// 6. Testing Generic constraints
+const stove: KitchenAppliance = {
+  serialNumber: "ZW-123-T5643",
+  model: "Kango Gold",
+  manufacturer: "Monarch",
+  lastServicedDate: "2026-08-15",
+  inService: true
+};
+
+const modelName = GetEntityProperty(stove, "model");
+console.log("6. Extracted Stove Model:", modelName);
+
+
+
