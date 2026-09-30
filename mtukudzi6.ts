@@ -32,7 +32,7 @@ class MtukudziSpecial extends KitchenMeal {
 
 class VegetarianMeal extends KitchenMeal {
   makeMeal(): string {
-    return "More Brocolli, less sauce!";
+    return "More Broccolli, less sauce!";
   }
 
   bestCook(): string {
@@ -98,7 +98,7 @@ console.log(">>>> MTUKUDZI KITCHEN SYSTEM <<<<<<<<<<");
 const group = wrapInKitchenGroup("Chef Curry", {customerName: "Victor", passID: 504});
 console.log("1. Kitchen Group Tuple:", group);
 
-// 2. Testing Polymorphsim
+// 2. Testing Polymorphism
 const testMeal: KitchenMeal[] = [
   new MtukudziSpecial("Order for Ben", "Large", 25.99, true),
   new VegetarianMeal("Order for Samson", "Medium", 20.45, false),
@@ -110,7 +110,7 @@ testMeal.forEach(meal => {
 })
 
 // 3. Testing Dicsriminated Unions
-const cjMeal: MtukudiziOrder = {kind: "dineIn", seats: 5};
+const cjMeal: MtukudziOrder = {kind: "dineIn", seats: 5};
 console.log("4. Maal Points added:", getOrderPoints(cjMeal));
 
   
