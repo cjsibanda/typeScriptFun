@@ -131,7 +131,7 @@ type FranchiseCode = `Franchise-${Branch}`; // Evaluates to "Franchise-Borrowdal
 
 type OwnerID = `OID-${number}`; //e.g., "OID-101"
 
-interface KithcenInfo {
+interface KitchenInfo {
   ownerID: OwnerID;
   location: FranchiseCode; 
 }
@@ -193,9 +193,9 @@ console.log("6. Extracted Stove Model:", modelName);
 // 7. Testing Template Literal Types
 const location: KitchenInfo = {
   ownerID: "OID-505",
-  location: "ZONE-Highlands"
+  location: "Franchise-Highlands"
 };
-console.log(`7. Kitchen Information added: ${location.id} in ${location.location}`);
+console.log(`7. Kitchen Information added: ${location.ownerID} in ${location.location}`);
 
 
 
