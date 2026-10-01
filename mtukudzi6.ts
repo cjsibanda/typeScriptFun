@@ -211,7 +211,7 @@ testMeal.forEach(meal => {
 
 // 3. Testing Discriminated Unions
 const cjMeal: MtukudziOrder = {kind: "dineIn", seats: 5};
-console.log("4. Meal Points added:", getOrderPoints(cjMeal));
+console.log("3. Meal Points added:", getOrderPoints(cjMeal));
 
 // 4. Testing Readonly Utility Types:
 const currentTour: ReadonlyDemo = { groupName: "Hillcrest College", maxGuests: 7};
