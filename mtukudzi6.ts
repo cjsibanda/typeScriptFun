@@ -163,6 +163,7 @@ interface KitchenOrder {
   waiterName: string;
   items: OrderItem[];
   orderType: MtukudziOrder;
+  status: OrderStatus;
   tableNumber?: number;
   customerName?: string;
 }
