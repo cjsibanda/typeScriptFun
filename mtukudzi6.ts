@@ -190,5 +190,12 @@ const stove: KitchenAppliance = {
 const modelName = GetEntityProperty(stove, "model");
 console.log("6. Extracted Stove Model:", modelName);
 
+// 7. Testing Template Literal Types
+const location: KitchenInfo = {
+  ownerID: "OID-505",
+  location: "ZONE-Highlands"
+};
+console.log(`7. Kitchen Information added: ${location.id} in ${location.location}`);
+
 
 
