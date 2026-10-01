@@ -217,4 +217,35 @@ const location: KitchenInfo = {
 };
 console.log(`7. Kitchen Information added: ${location.ownerID} in ${location.location}`);
 
+// 7b. Testing for MealSize types
+//adding order
+// circle-bck
+const order001: KitchenOrder = {
+  orderID: "ORD-1001",
+  waiterName: "Victor",
+  items: [
+    {
+      mealName: "Mtukudzi Special",
+      size: "Large",
+      quantity: 2,
+      price: 25.99,
+      specialInstructions: "Extra Sauce please!!"
+    },
+    {
+      mealName: "Vegetarian Meal",
+      size: "Medium",
+      quantity: 1,
+      price: 20.99
+    }
+  ],
+  orderType: {
+    kind: "dineIn",
+    seats: 4
+  },
+  tableNumber: 12
+};
+
+
+
+
 
