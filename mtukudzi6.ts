@@ -139,6 +139,17 @@ interface KitchenInfo {
 // 7b. To add a proper order type
 type MealSize = "Small" | "Medium" | "Large";
 
+//Order status
+type OrderStatus = 
+  | "pending"
+  | "preparing"
+  | "ready"
+  | "served"
+  | "cancelled";
+
+
+
+
 interface OrderItem {
   mealName: string;
   size: MealSize;
