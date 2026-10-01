@@ -245,6 +245,7 @@ console.log(`7. Kitchen Information added: ${location.ownerID} in ${location.loc
 // circle-bck
 const order001: KitchenOrder = {
   orderID: "ORD-1001",
+  status: "pending",
   waiterName: "Victor",
   items: [
     {
@@ -267,6 +268,16 @@ const order001: KitchenOrder = {
   },
   tableNumber: 12
 };
+
+
+//8. testing the Order Status Update Function
+const updatedOrder = updateOrderStatus(order001, "preparing");
+console.log("8. Updated Order Status:", updatedOrder.status);
+//for the whole order (not just status):
+const wholeOrder = updateOrderStatus(order001, "preparing");
+console.log("8. Original Status:", order001.status);
+console.log("The whole Order (not just status):", wholeOrder);
+
 
 
 
