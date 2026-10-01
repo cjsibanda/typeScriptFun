@@ -124,6 +124,18 @@ function GetEntityProperty<T, K extends keyof T>(entity: T, key: K): T[K] {
   return entity[key];
 }
 
+//Template Literal Types
+// For Branch/Franchise IDs and operating locations
+type Branch = "Borrowdale" | "Highlands" | "Marondera" | "Vic Falls";
+type FranchiseCode = `Franchise-${Branch}`; // Evaluates to "Franchise-Borrowdale" | "Franchise-Highlands" | ...| ..,
+
+type OwnerID = `OID-${number}`; //e.g., "OID-101"
+
+interface KithcenInfo {
+  ownerID: OwnerID;
+  location: FranchiseCode; 
+}
+
 // Utility Types (Partial, Pick, Omit)
 interface KitchenAppliance {
   serialNumber: string;
