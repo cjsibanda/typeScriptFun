@@ -177,6 +177,17 @@ interface KitchenAppliance {
   inService: boolean;
 }
 
+//8. Order Status Update Function
+function updateOrderStatus(
+  order: KitchenOrder,
+  status: OrderStatus
+): KitchenOrder {
+  return {
+    ...order,
+    status
+  };
+}
+
 
 /////////////////////////////////////////////////////////////////////////////
 //////////////    Trust But Verify     //////////////////////////////<////////
