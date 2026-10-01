@@ -188,6 +188,12 @@ function updateOrderStatus(
   };
 }
 
+// 9. Calulate Total Price Function
+// Circle bck
+function calculateOrderTotal(order: KitchenOrder) {
+  return "The Total price is $"
+}
+
 
 /////////////////////////////////////////////////////////////////////////////
 //////////////    Trust But Verify     //////////////////////////////<////////
@@ -270,7 +276,7 @@ const order001: KitchenOrder = {
 };
 
 
-//8. testing the Order Status Update Function
+// 8. testing the Order Status Update Function
 const updatedOrder = updateOrderStatus(order001, "preparing");
 console.log("8. Updated Order Status:", updatedOrder.status);
 //for the whole order (not just status):
@@ -278,6 +284,10 @@ const wholeOrder = updateOrderStatus(order001, "preparing");
 console.log("8. Original Status:", order001.status);
 console.log("The whole Order (not just status):", wholeOrder);
 
+
+// 9. Testing total price function
+const total = calculateOrderTotal(order001);
+console.log("Order total:", total);
 
 
 
