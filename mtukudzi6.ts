@@ -124,7 +124,7 @@ function GetEntityProperty<T, K extends keyof T>(entity: T, key: K): T[K] {
   return entity[key];
 }
 
-//Template Literal Types
+// 7a. Template Literal Types
 // For Branch/Franchise IDs and operating locations
 type Branch = "Borrowdale" | "Highlands" | "Marondera" | "Vic Falls";
 type FranchiseCode = `Franchise-${Branch}`; // Evaluates to "Franchise-Borrowdale" | "Franchise-Highlands" | ...| ..,
@@ -134,6 +134,26 @@ type OwnerID = `OID-${number}`; //e.g., "OID-101"
 interface KitchenInfo {
   ownerID: OwnerID;
   location: FranchiseCode; 
+}
+
+// 7b. To add a proper order type
+type MealSize = "Small" | "Medium" | "Large";
+
+interface OrderItem {
+  mealName: string;
+  size: MealSize;
+  quantity: number;
+  price: number;
+  specialInstructions?: string;
+}
+
+interface KitchenOrder {
+  orderID: string;
+  waiterName: string;
+  items: OrderItem[];
+  orderType: MtukudziOrder;
+  tableNumber?: number;
+  customerName?: string;
 }
 
 // Utility Types (Partial, Pick, Omit)
@@ -190,12 +210,11 @@ const stove: KitchenAppliance = {
 const modelName = GetEntityProperty(stove, "model");
 console.log("6. Extracted Stove Model:", modelName);
 
-// 7. Testing Template Literal Types
+// 7a. Testing Template Literal Types
 const location: KitchenInfo = {
   ownerID: "OID-505",
   location: "Franchise-Highlands"
 };
 console.log(`7. Kitchen Information added: ${location.ownerID} in ${location.location}`);
-
 
 
