@@ -192,11 +192,11 @@ function updateOrderStatus(
 
 // 9. Calulate Total Price Function
 function calculateOrderTotal(order: KitchenOrder): string {
-  const total = order.meals.reduce((sum, meal) => {
-    return sum + meal["price"];
+  const total = order.items.reduce((sum, item) => {
+    return sum + item.price * item.quantity;
   }, 0);
 
-  return `The Total price is $${total}`;
+  return `The Total price is $${total.toFixed(2)}`;
 }
 
 
@@ -220,9 +220,59 @@ testMeal.forEach(meal => {
   console.log(`2. ${meal.name}'s best cook`, meal.bestCook());
 })
 
+////////////////////////////////////////////////////////////
 // 3. Testing Discriminated Unions
+////////////////////////////////////////////////////////////
 const cjMeal: MtukudziOrder = {kind: "dineIn", seats: 5};
 console.log("3. Meal Points added:", getOrderPoints(cjMeal));
+
+///////////////////////////////////////////////////////////
+// Testing every discriminated branch
+///////////////////////////////////////////////////////////
+describe("getOrderPoints", () => {
+  test("calculates dine-in points", () => {
+    const order: DineIn = {
+      kind: "dineIn",
+      seats: 3,
+    };
+    expect(getOrderPoints(order)).toBe(60);
+  });
+
+  test("calculates catering points", () => {
+    const order: Catering = {
+      kind: "catering",
+      seats: 3,
+    };
+    expect(getOrderPoints(order)).toBe(90);
+  });
+
+  test("calculates delivery points", () => {
+    const order: Delivery = {
+      kind: "delivery",
+      distance: 10,
+    };
+    expect(getOrderPoints(order)).toBe(175);
+  });
+
+  test("returns discounted pickup points", () => {
+    const order: Pickup = {
+      kind: "pickup",
+      timeRemaining: 20,
+      applyDiscount: true,
+    };
+    expect(getOrderPoints(order)).toBe(30);
+  });
+
+  test("returns regular pickup points", () => {
+    const order: Pickup = {
+      kind: "pickup",
+      timeRemaining: 20,
+      applyDiscount: false,
+    };
+    expected(getOrderPoints(order)).toBe(20);
+  });  
+});
+
 
 // 4. Testing Readonly Utility Types:
 const currentTour: ReadonlyDemo = { groupName: "Hillcrest College", maxGuests: 7};
