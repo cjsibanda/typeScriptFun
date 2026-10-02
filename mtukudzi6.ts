@@ -86,6 +86,8 @@ function getOrderPoints(order: MtukudziOrder): number {
       return order.distance * 17.5;
     case "pickup":
       return order.applyDiscount ? 30 : 20;
+    default:
+      throw new Error(`Unknown order kind: ${order.kind}`);
   }
 }
 
