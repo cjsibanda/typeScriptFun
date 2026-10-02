@@ -191,9 +191,12 @@ function updateOrderStatus(
 }
 
 // 9. Calulate Total Price Function
-// Circle bck
-function calculateOrderTotal(order: KitchenOrder) {
-  return "The Total price is $"
+function calculateOrderTotal(order: KitchenOrder): string {
+  const total = order.meals.reduce((sum, meal) => {
+    return sum + meal["price"];
+  }, 0);
+
+  return `The Total price is $${total}`;
 }
 
 
