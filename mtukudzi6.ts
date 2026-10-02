@@ -269,8 +269,33 @@ describe("getOrderPoints", () => {
       timeRemaining: 20,
       applyDiscount: false,
     };
-    expected(getOrderPoints(order)).toBe(20);
+    expect(getOrderPoints(order)).toBe(20);
   });  
+});
+
+describe("calculateOrderTotal", () => {
+  test("calculates total using quantity and price", () => {
+    expect(calculateORderTotal(order001)).toBe(
+      "The Total price is $72.97"
+    );
+  });
+
+  test("returns zero for an empty order", () => {
+    const emptyOrder: KitchenOrder = {
+      orderID: "ORD-1002",
+      status: "pending",
+      waiterName: "Victor",
+      items: [],
+      orderType: {
+        kind: "pickup",
+        timeRemaining: 15,
+        applyDiscount: false
+      }
+    };
+    expected(calculatedOrderTotal(emptyOrder)).toBe(
+      "The Total price is $0.00"
+    );
+  });
 });
 
 
