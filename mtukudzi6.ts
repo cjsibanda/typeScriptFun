@@ -12,7 +12,7 @@ abstract class KitchenMeal {
   constructor(
     public name: string,
     public size: string,
-    protected price: number,
+    public price: number,
     protected specialSauce: boolean
   ) {}
 
