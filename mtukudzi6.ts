@@ -318,7 +318,6 @@ const wholeOrder = updateOrderStatus(order001, "preparing");
 console.log("8. Original Status:", order001.status);
 console.log("The whole Order (not just status):", wholeOrder);
 
-
 // 9. Testing total price function
 const total = calculateOrderTotal(order001);
 console.log("9. Order total:", total);
@@ -329,6 +328,11 @@ const seatingAreaIterator = generateSeatingMap();
 for (const waypoint of seatingAreaIterator) {
   console.log(` -> Finding: ${waypoint}`);
 }
+
+// 11. Testing Custom Mapped Types
+console.log("11. Form Validation Errors Object:", bookingValidationState);
+
+
 
 
 
