@@ -282,6 +282,7 @@ const order001: KitchenOrder = {
   tableNumber: 12
 };
 
+console.log("7. This is the added order:", order001);
 
 // 8. testing the Order Status Update Function
 const updatedOrder = updateOrderStatus(order001, "preparing");
