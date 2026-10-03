@@ -149,8 +149,6 @@ type OrderStatus =
   | "cancelled";
 
 
-
-
 interface OrderItem {
   mealName: string;
   size: MealSize;
@@ -208,6 +206,24 @@ function generateSeatingMap(): Generator<string, void, unknown> {
   yield "Seating Area 5: Communal Tables (shared tables in the center)";
 }
 
+
+// 11. Mapped Types (Custom Propery Transformers)
+//Iterates over keys of an existing type using `keyof` and `in`
+interface GuestBookingForm {
+  fullName: string;
+  age: number;
+  couponNumber: string;
+}
+
+//Custom Mapped Type: Transformed every property of T into an error tracking string
+type ValidationErrors<T> = {
+  [K in keyof T]?: string;
+};
+
+const bookingValidationState:
+ValidationErrors<GuestBookingForm> = {
+  couponNumber: "Coupon Expires within 2 weeks!"
+};
 
 /////////////////////////////////////////////////////////////////////////////
 //////////////    Trust But Verify     //////////////////////////////<////////
