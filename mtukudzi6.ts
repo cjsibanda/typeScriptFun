@@ -305,9 +305,14 @@ console.log("The whole Order (not just status):", wholeOrder);
 
 // 9. Testing total price function
 const total = calculateOrderTotal(order001);
-console.log("Order total:", total);
+console.log("9. Order total:", total);
 
-
+// 10. Testing Iterators and Generators
+console.log("10 Executing Mtukudzi Kitchen Seating Area Iteration");
+const seatingAreaIterator = generateSeatingMap();
+for (const waypoint of seatingAreaIterator) {
+  console.log(` -> Finding: ${waypoint}`);
+}
 
 
 
