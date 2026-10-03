@@ -198,6 +198,16 @@ function calculateOrderTotal(order: KitchenOrder): string {
   return `The Total price is $${total.toFixed(2)}`;
 }
 
+// 10. Iterator and Generators (``function*` and `yield`)
+// Seating Areas
+function generateSeatingMap(): Generator<string, void, unknown> {
+  yield "Seating Area 1: Patio Area (Outside the sliding doors overlooking the lake)";
+  yield "Seating Area 2: Cozy Booths (along the walls)";
+  yield "Seating Area 3: Rooftop Terrace (views of the city skyline)";
+  yield "Seating Area 4: Bar Counter (stools facing the bartender/kitchen)";
+  yield "Seating Area 5: Communal Tables (shared tables in the center)";
+}
+
 
 /////////////////////////////////////////////////////////////////////////////
 //////////////    Trust But Verify     //////////////////////////////<////////
