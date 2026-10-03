@@ -225,6 +225,16 @@ ValidationErrors<GuestBookingForm> = {
   couponNumber: "Coupon Expires within 2 weeks!"
 };
 
+// 12. Modules (`export` & `import`)
+export interface OrderTablet {
+  serialNumber: string;
+  assignedTo: string;
+}
+
+export function logTabletAssignment(tablet: OrderTablet): string {
+  return `Order tablet: ${tablet.serialNumber} has been assigned to ${tablet.assignedTo}`;
+}
+
 /////////////////////////////////////////////////////////////////////////////
 //////////////    Trust But Verify     //////////////////////////////<////////
 /////////////////////////////////////////////////////////////////////////////
@@ -332,7 +342,9 @@ for (const waypoint of seatingAreaIterator) {
 // 11. Testing Custom Mapped Types
 console.log("11. Form Validation Errors Object:", bookingValidationState);
 
-
+// 12. Testing Module Exports/Imports
+const tabletAssignment: OrderTablet = {serialNumber: "ZW2=3456", assignedTo: "Mary Dube"};
+console.log("12. Table Assignement function test:", logTabletAssignment(tabletAssignment));
 
 
 
