@@ -109,7 +109,7 @@ function getFeedingSchedule(diet: AnimalDiet): string {
       return "Continuous grazing access until 08:00.";
     case "omnivore":
       return "Root/fruit and protein supplement.";
-    case "likesDietCoke"
+    case "likesDietCoke":
       return "Some diet coke and cheese burgers."
     case "insectivore":
       return "Lots of bugs, spiders and worms"
