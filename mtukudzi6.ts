@@ -198,7 +198,7 @@ function calculateOrderTotal(order: KitchenOrder): string {
 
 // 10. Iterator and Generators (``function*` and `yield`)
 // Seating Areas
-function generateSeatingMap(): Generator<string, void, unknown> {
+function* generateSeatingMap(): Generator<string, void, unknown> {
   yield "Seating Area 1: Patio Area (Outside the sliding doors overlooking the lake)";
   yield "Seating Area 2: Cozy Booths (along the walls)";
   yield "Seating Area 3: Rooftop Terrace (views of the city skyline)";
