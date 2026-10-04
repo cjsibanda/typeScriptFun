@@ -195,7 +195,7 @@ type ExpeditionManifest = typeof baselineExpedition;
 * Creating a custom iterable routine to yield sequenctial game drive
 * There are checkpoints across the park
 ********************************************************************/
-function generateHwangeRoute(): Generator<string, void, unknown> {
+function* generateHwangeRoute(): Generator<string, void, unknown> {
   yield "Checkpoint 1: Main Camp Waterhole (Elephants & Zebras)";
   yield "Checkpoint 2: Nyamandlovu Pan (A Sunset Vantage Point)";
   yield "Checkpoint 3: Mufakose Escarpment (Lions & Leopards)";
