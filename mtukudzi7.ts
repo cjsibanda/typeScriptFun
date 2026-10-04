@@ -28,6 +28,28 @@ function getTag(value: unknown): string {
 }
 
 /**********************************************************************************
+* Type Guard - Runtime check that gurantees the type in some scope
+***********************************************************************************/
+function isCattle(value: unknown): value is Cattle {
+  if (typeof value !== "object" || value === null) return false;
+
+  const record = value as Record<string, unknown>;
+
+  return (
+    typeof record.tag === "string" &&
+    typeof record.breed === "string" &&
+    typeof record.weightKg === "number" &&
+    typeof record.district === "string"
+  );
+}
+
+function describeCattle(value: unknown): string {
+  return isCattle(value)
+    ? `${value.tag}: ${value.breed}, ${value.weightKg}kg from ${value.district}`
+    : "Invalid cattle record";
+}
+
+/**********************************************************************************
 * ***************** Trust But Verify ********************************************** 
 ***********************************************************************************/
 
@@ -46,3 +68,5 @@ const mombe1: unknown = {
 
 console.log("2. Mombe 1 Tag:", getTag(mombe1));
 
+// 3. testing Type Guard
+console.log("3. Testing Type Guard:", describeCattle(mombe1));
