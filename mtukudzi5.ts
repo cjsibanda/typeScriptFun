@@ -122,11 +122,11 @@ function getFeedingSchedule(diet: AnimalDiet): string {
 
 /***********************************************************************************
 * 7. Template Literal types
-* These are strongly typed strings formatted formmatted specifically
+* These are strongly typed strings formatted specifically
 * ....for safari  tracking IDs and operational locations.
 ***********************************************************************************/
 type Sector =  "Highlands" | "Borrowdale" | "Nyamandlovu" | "Riverside";
-type ZoneCode = `ZONE-${Sector}`; //Evaluates to "Zone-Higlands" | "ZONE-Borrowdale" | ..,
+type ZoneCode = `ZONE-${Sector}`; //Evaluates to "Zone-Highlands" | "ZONE-Borrowdale" | ..,
 
 type RangerID = `RNR-${number}`; //e.g., "RNR-101"
 
@@ -176,8 +176,8 @@ enum BookingTier {
 
 /*************************************************************************
 * 10. Typeof Type Operator
-* Cuptures the static type directly from an existing runtime configuration
-* ... object so that we don't have to duplicate interfce definition.
+* Captures the static type directly from an existing runtime configuration
+* ... object so that we don't have to duplicate interface definition.
 **************************************************************************/
 const baselineExpedition = {
   expeditionLeader: "Chief Ranger CJ",
@@ -192,7 +192,7 @@ type ExpeditionManifest = typeof baselineExpedition;
 
 /*******************************************************************
 * 11. Iterator and Generators (`function*` and `yield`)
-* Creating a custom iterable routine to yield sequenctial game drive
+* Creating a custom iterable routine to yield sequential game drive
 * There are checkpoints across the park
 ********************************************************************/
 function* generateHwangeRoute(): Generator<string, void, unknown> {
