@@ -28,7 +28,7 @@ function getTag(value: unknown): string {
 }
 
 /**********************************************************************************
-* Type Guard - Runtime check that gurantees the type in some scope
+* 3. Type Guard - Runtime check that gurantees the type in some scope
 ***********************************************************************************/
 function isCattle(value: unknown): value is Cattle {
   if (typeof value !== "object" || value === null) return false;
@@ -48,6 +48,46 @@ function describeCattle(value: unknown): string {
     ? `${value.tag}: ${value.breed}, ${value.weightKg}kg from ${value.district}`
     : "Invalid cattle record";
 }
+
+/*********************************************************************************
+* 4. intanceof - Checks an object's constructor class
+**********************************************************************************/
+abstract class BSCFacility {
+  constructor(public name: string, public town: string) {}
+}
+
+class SlaughterHouse extends BSCFacility {
+  constructor(
+    name: string,
+    town: string,
+    public capacity: number
+  ) {
+    super(name, town);
+  }
+} 
+
+class MombeStore extends BSCFacility {
+  constructor(
+    name: string,
+    town: string,
+    public capacityTonnes: number
+  ) {
+    super(name, town);
+  }
+}
+
+function identifyFacility(facility: BSCFacility): string {
+  if (facility instanceof SlaughterHouse) {
+    return `Slaughter House: ${facility.name}, capacity ${facility.capacity}`;
+  }
+
+  if (facility instanceof MombeStore) {
+    return `Mombe Store: ${facility.name}, ${facility.capacityTonnes} tonnes`;
+  }
+
+  return "Unkown Facility";
+}
+
 
 /**********************************************************************************
 * ***************** Trust But Verify ********************************************** 
@@ -70,3 +110,20 @@ console.log("2. Mombe 1 Tag:", getTag(mombe1));
 
 // 3. testing Type Guard
 console.log("3. Testing Type Guard:", describeCattle(mombe1));
+
+// 4. Testing instanceof
+const slaughterHouse = new SlaughterHouse(
+  "BSC Bulawyo SlaughterHouse",
+  "Bulawayo",
+  1200
+);
+
+const mombeStore = new MombeStore(
+  "BSC Vic Falls Mombe Store",
+  "Victoria Falls",
+  800
+);
+
+console.log("4. Testing instanceof- Slaughter House:", identifyFacility(slaughterHouse));
+console.log("4. Testing instanceof - Mombe Store:", identifyFacility(mombeStore));
+
