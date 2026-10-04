@@ -13,7 +13,7 @@ function inspectRecord(value: unknown): string {
 }
 
 /***********************************************************************************
-* 2. Type Asserion - Overrides Typescripts inferred type
+* 2. Type Assertion - Overrides Typescripts inferred type
 ************************************************************************************/
 interface Cattle {
   tag: string;
