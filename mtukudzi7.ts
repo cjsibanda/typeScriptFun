@@ -88,6 +88,32 @@ function identifyFacility(facility: BSCFacility): string {
   return "Unkown Facility";
 }
 
+/**********************************************************************************
+* 5. Optional Chaining & Nullish Coalescing 
+* Safely reads deeply nested properties
+* Fallback for null or undefined
+***********************************************************************************/
+interface Supplier {
+  name: string;
+  district: string;
+  contact?: {
+    phone?: string;
+  };
+}
+
+function getSupplierPhone(supplier: Supplier): string {
+  return supplier.contact?.phone ?? "No phone number supplied";
+}
+
+interface ColdRoom {
+  room: string;
+  temperature?: number;
+}
+
+function getTemperature(room: ColdRoom): number {
+  return room.temperature ?? -18;
+}
+
 
 /**********************************************************************************
 * ***************** Trust But Verify ********************************************** 
@@ -126,4 +152,14 @@ const mombeStore = new MombeStore(
 
 console.log("4. Testing instanceof- Slaughter House:", identifyFacility(slaughterHouse));
 console.log("4. Testing instanceof - Mombe Store:", identifyFacility(mombeStore));
+
+// 5. Testing Optional Chaining & Nullish Coalescing
+const supplier: Supplier = {
+  name: "Harare Mombe Estate",
+  district: "Harare"
+};
+
+console.log("5. Supplier Phone number is:", getSupplierPhone(supplier));
+console.log("5. Cold Room Temperature is", getTemperature({ room: "CR-HRE-01"}));
+
 
