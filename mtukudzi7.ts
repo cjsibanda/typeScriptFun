@@ -134,6 +134,16 @@ function describeAnimal(animal: WeighedAnimal): string {
   return `${animal.id} weighs ${animal.weightKg}kg`;
 }
 
+/********************************************************************************
+* 7. Function Types - Defines parameters and return type.
+*********************************************************************************/
+type PriceCalculator = (
+  weightKg: number,
+  pricePerKg: number,
+) => number;
+
+const calculatePrice: PriceCalculator = (weightKg, pricePerKg) => weightKg * pricePerKg;
+
 
 /**********************************************************************************
 * ***************** Trust But Verify ********************************************** 
@@ -189,4 +199,7 @@ const animal: WeighedAnimal = {
 };
 
 console.log("6. The animal description is:", describeAnimal(animal));
+
+// 7. Testing Function Types
+console.log("7. The price of the Nyama is: ", calculatePrice(35, 9.5));
 
