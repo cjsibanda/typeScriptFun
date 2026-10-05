@@ -114,6 +114,26 @@ function getTemperature(room: ColdRoom): number {
   return room.temperature ?? -18;
 }
 
+/**********************************************************************************
+* 6 Union + Intersection Types
+* Intersection types combine multiple types into 1
+**********************************************************************************/
+type AnimalType = "cattle" | "goal" | "sheep";
+
+interface Identifiable {
+  id: string;
+}
+
+interface Weighable {
+  weightKg: number;
+}
+
+type WeighedAnimal = Identifiable & Weighable;
+
+function describeAnimal(animal: WeighedAnimal): string {
+  return `${animal.id} weighs ${animal.weightKg}kg`;
+}
+
 
 /**********************************************************************************
 * ***************** Trust But Verify ********************************************** 
@@ -162,4 +182,11 @@ const supplier: Supplier = {
 console.log("5. Supplier Phone number is:", getSupplierPhone(supplier));
 console.log("5. Cold Room Temperature is", getTemperature({ room: "CR-HRE-01"}));
 
+// 6 Testing Unions and Intersection types
+const animal: WeighedAnimal = {
+  id: "ZIM-BYO-647",
+  weightKg: 647
+};
+
+console.log("6. The animal description is:", describeAnimal(animal));
 
