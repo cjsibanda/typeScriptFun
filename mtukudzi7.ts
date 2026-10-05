@@ -162,6 +162,28 @@ const regionalManagers: Record<BSCRegion, string> = {
   Black: "Gweru Operations"
 };
 
+/*********************************************************************************
+* 9. Required + Non-nullable + Return Type + Parameters
+**********************************************************************************/
+interface Worker {
+  id: string;
+  name: string;
+  department?: string;
+}
+
+type CompleteWorker = Required<Worker>;
+type Department = NonNullable<Worker["department"]>;
+
+function workerSummary(worker: Worker) {
+  return {
+    id: worker.id,
+    name: worker.name,
+    department: worker.department ?? "No Assigned"
+  };
+}
+
+type Summary = ReturnType<typeof workerSummary>;
+type SummaryParameters = Parameters<typeof workerSummary>;
 
 
 /**********************************************************************************
@@ -224,5 +246,16 @@ console.log("7. The price of the Nyama is: ", calculatePrice(35, 9.5));
 
 // 8. Testing Record(s)
 console.log("Green Region Manager:", regionalManagers.Green);
+
+// 9. Testing Utility types
+const worker: CompleteWorker = {
+  id: "ZIZ-010",
+  name: "Charles Barkley",
+  department: "Biltong Processing"
+};
+
+const summary: Summary = workerSummary(worker);
+
+console.log("9. The Worker Summary is:", summary);
 
 
