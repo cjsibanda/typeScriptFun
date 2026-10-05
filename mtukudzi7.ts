@@ -144,6 +144,25 @@ type PriceCalculator = (
 
 const calculatePrice: PriceCalculator = (weightKg, pricePerKg) => weightKg * pricePerKg;
 
+/***********************************************************************************
+* 8. Record = Maps keys to value types
+************************************************************************************/
+type BSCRegion = 
+  | "Green"
+  | "Blue"
+  | "Yellow"
+  | "Red"
+  | "Black"
+
+const regionalManagers: Record<BSCRegion, string> = {
+  Green: "Bulawayo Operations",
+  Blue: "Harare Operations",
+  Yellow: "Mutare Operations",
+  Red: "Masvingo Operations",
+  Black: "Gweru Operations"
+};
+
+
 
 /**********************************************************************************
 * ***************** Trust But Verify ********************************************** 
@@ -202,4 +221,8 @@ console.log("6. The animal description is:", describeAnimal(animal));
 
 // 7. Testing Function Types
 console.log("7. The price of the Nyama is: ", calculatePrice(35, 9.5));
+
+// 8. Testing Record(s)
+console.log("Green Region Manager:", regionalManagers.Green);
+
 
