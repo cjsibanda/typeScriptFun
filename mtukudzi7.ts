@@ -148,33 +148,33 @@ const calculatePrice: PriceCalculator = (weightKg, pricePerKg) => weightKg * pri
 * 8. Record = Maps keys to value types
 ************************************************************************************/
 type BSCRegion = 
-  | "Green"
-  | "Blue"
-  | "Yellow"
-  | "Red"
-  | "Black"
+  | "GreenZone"
+  | "BlueZone"
+  | "YellowZone"
+  | "RedZone"
+  | "BlackZone"
 
 const regionalManagers: Record<BSCRegion, string> = {
-  Green: "Bulawayo Operations",
-  Blue: "Harare Operations",
-  Yellow: "Mutare Operations",
-  Red: "Masvingo Operations",
-  Black: "Gweru Operations"
+  GreenZone: "Bulawayo Operations",
+  BlueZone: "Harare Operations",
+  YellowZone: "Mutare Operations",
+  RedZone: "Masvingo Operations",
+  BlackZone: "Gweru Operations"
 };
 
 /*********************************************************************************
 * 9. Required + Non-nullable + Return Type + Parameters
 **********************************************************************************/
-interface Worker {
+interface BSCWorker {
   id: string;
   name: string;
   department?: string;
 }
 
-type CompleteWorker = Required<Worker>;
-type Department = NonNullable<Worker["department"]>;
+type CompleteWorker = Required<BSCWorker>;
+type Department = NonNullable<BSCWorker["department"]>;
 
-function workerSummary(worker: Worker) {
+function workerSummary(worker: BSCWorker) {
   return {
     id: worker.id,
     name: worker.name,
@@ -245,7 +245,7 @@ console.log("6. The animal description is:", describeAnimal(animal));
 console.log("7. The price of the Nyama is: ", calculatePrice(35, 9.5));
 
 // 8. Testing Record(s)
-console.log("Green Region Manager:", regionalManagers.Green);
+console.log("Green Zone Region Manager:", regionalManagers.GreenZone);
 
 // 9. Testing Utility types
 const worker: CompleteWorker = {
