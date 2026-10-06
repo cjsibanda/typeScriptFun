@@ -194,20 +194,23 @@ function findBSCRecord(id: number): { product: string; weightKg: number };
 
 function findBSCRecord(
   id: string | number
-): Cattle | { product: string; weightKg: number} {
-  return {
-    tag: id,
-    breed: "Nkomo",
-    weightKg: 510,
-    district: "Skies"
-  };
-}
+): Cattle | { product: string; weightKg: number } {
+  if (typeof id === "string") {
+    return {
+      tag: id,
+      breed: "Nkomo",
+      weightKg: 507,
+      district: "Skies"
+    };
+  }
 
 return {
   product: "Prime Nyama",
   weightKg: 25
- };
+ };  
 }
+
+
 
 
 
