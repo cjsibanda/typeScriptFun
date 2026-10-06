@@ -226,6 +226,23 @@ type OfficeCity = HeadOffice["city"];
 const selectedField: OfficeKey = "city";
 const selectedCity: OfficeCity = bscHeadOffice.city;
 
+/***************************************************************************
+* 12. Satisfies - Validates types without changing them
+***************************************************************************/
+interface BranchConfig {
+  town: string;
+  province: string;
+  active: boolean;
+  facility: "slaughterHouse" | "mombeStore";
+}
+
+const bulawayoBranch = {
+  town: "Bulawayo",
+  province: "Matabeleland North",
+  active: true,
+  facility: "slaughterHouse"
+} satisfies BranchConfig;
+
 
 /**********************************************************************************
 * ***************** Trust But Verify ********************************************** 
@@ -305,10 +322,11 @@ const productResult = findBSCRecord(1050);
 console.log("10. Cattle:", cattleResult);
 console.log("10. Product:", productResult);
 
-// 11. keyof + typeof + indexed access
+// 11. testing: keyof + typeof + indexed access
 console.log("11. Selected Field & City: ", selectedField, selectedCity);
 
-
+// 12. testing satisfies
+console.log("12. Bulawayo Branch:", bulawayoBranch);
 
 
 
