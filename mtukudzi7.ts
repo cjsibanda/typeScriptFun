@@ -243,6 +243,19 @@ const bulawayoBranch = {
   facility: "slaughterHouse"
 } satisfies BranchConfig;
 
+/******************************************************************************
+* 13. Intersection - Combining the Types
+*******************************************************************************/
+interface Production {
+  id: string;
+  cattleTag: string;
+  facility: string;
+  weightKg: number;
+}
+
+type AuditedProduction = Production & {
+  auditedBy: string;
+};
 
 /**********************************************************************************
 * ***************** Trust But Verify ********************************************** 
@@ -263,7 +276,7 @@ const mombe1: unknown = {
 
 console.log("2. Mombe 1 Tag:", getTag(mombe1));
 
-// 3. testing Type Guard
+// 3. Testing Type Guard
 console.log("3. Testing Type Guard:", describeCattle(mombe1));
 
 // 4. Testing instanceof
@@ -322,11 +335,21 @@ const productResult = findBSCRecord(1050);
 console.log("10. Cattle:", cattleResult);
 console.log("10. Product:", productResult);
 
-// 11. testing: keyof + typeof + indexed access
+// 11. Testing: keyof + typeof + indexed access
 console.log("11. Selected Field & City: ", selectedField, selectedCity);
 
-// 12. testing satisfies
+// 12. Testing satisfies
 console.log("12. Bulawayo Branch:", bulawayoBranch);
 
+// 13. Testing Intersection (Combining Types)
+const auditedBatch: AuditedProduction = {
+  id: "PROD-007",
+  cattleTag: "CAN-BYO-510",
+  facility: "CSC Bulawayo Slaughter House",
+  weightKg: 501,
+  auditedBy: "Vusi Moyo"
+};
+
+console.log("13. Audited Production:", auditedBatch);
 
 
