@@ -13,7 +13,7 @@ function inspectRecord(value: unknown): string {
 }
 
 /***********************************************************************************
-* 2. Type Assertion - Overrides Typescripts inferred type
+* 2. Type Assertion - Overrides Typescript's inferred type
 ************************************************************************************/
 interface Cattle {
   tag: string;
@@ -210,8 +210,21 @@ return {
  };  
 }
 
+/*************************************************************************
+* 11. keyof + typeof + Indexed Access
+**************************************************************************/
+const bscHeadOffice = {
+  city: "Harare",
+  province: "Harare",
+  country: "Zimbabwe"
+};
 
+type HeadOffice = typeof bscHeadOffice;
+type OfficeKey = keyof HeadOffice;
+type OfficeCity = HeadOffice["city"];
 
+const selectedField: OfficeKey = "city";
+const selectedCity: OfficeCity = bscHeadOffice.city;
 
 
 /**********************************************************************************
@@ -291,5 +304,11 @@ const productResult = findBSCRecord(1050);
 
 console.log("10. Cattle:", cattleResult);
 console.log("10. Product:", productResult);
+
+// 11. keyof + typeof + indexed access
+console.log("11. Selected Field & City: ", selectedField, selectedCity);
+
+
+
 
 
