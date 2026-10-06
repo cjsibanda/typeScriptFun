@@ -186,6 +186,31 @@ type Summary = ReturnType<typeof workerSummary>;
 type SummaryParameters = Parameters<typeof workerSummary>;
 
 
+/************************************************************************
+* 10. Function Overloads - Multiple signatures, single implementation 
+*************************************************************************/
+function findBSCRecord(id: string): Cattle;
+function findBSCRecord(id: number): { product: string; weightKg: number };
+
+function findBSCRecord(
+  id: string | number
+): Cattle | { product: string; weightKg: number} {
+  return {
+    tag: id,
+    breed: "Nkomo",
+    weightKg: 510,
+    district: "Skies"
+  };
+}
+
+return {
+  product: "Prime Nyama",
+  weightKg: 25
+ };
+}
+
+
+
 /**********************************************************************************
 * ***************** Trust But Verify ********************************************** 
 ***********************************************************************************/
@@ -255,7 +280,13 @@ const worker: CompleteWorker = {
 };
 
 const summary: Summary = workerSummary(worker);
-
 console.log("9. The Worker Summary is:", summary);
+
+// 10. Testing Overloads
+const cattleResult = findBSCRecord("CAN-BYO-541");
+const productResult = findBSCRecord(1050);
+
+console.log("10. Cattle:", cattleResult);
+console.log("10. Product:", productResult);
 
 
