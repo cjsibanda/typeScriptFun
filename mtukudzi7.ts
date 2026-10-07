@@ -178,7 +178,7 @@ function workerSummary(worker: BSCWorker) {
   return {
     id: worker.id,
     name: worker.name,
-    department: worker.department ?? "No Assigned"
+    department: worker.department ?? "Not Assigned"
   };
 }
 
@@ -205,7 +205,7 @@ function findBSCRecord(
   }
 
 return {
-  product: "Prime Nyama",
+  product: "BSC Biltong Original (Pepper & Coriander)",
   weightKg: 25
  };  
 }
