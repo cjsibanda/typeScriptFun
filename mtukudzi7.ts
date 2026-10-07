@@ -111,14 +111,14 @@ interface ColdRoom {
 }
 
 function getTemperature(room: ColdRoom): number {
-  return room.temperature ?? -18;
+  return room.temperature ?? -19;
 }
 
 /**********************************************************************************
 * 6 Union + Intersection Types
 * Intersection types combine multiple types into 1
 **********************************************************************************/
-type AnimalType = "cattle" | "goal" | "sheep";
+type AnimalType = "cattle" | "goat" | "sheep" | "hog";
 
 interface Identifiable {
   id: string;
