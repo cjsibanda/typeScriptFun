@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------
 // BILTONG STORAGE COMPANY (BSC) MANAGEMENT SYSTEM - TypeScript
-// Meat Processing & Cold Chain
+// Meat Processing & Cold Chain Company
 //---------------------------------------------------------------------------------
 
 /***********************************************************************************
@@ -85,7 +85,7 @@ function identifyFacility(facility: BSCFacility): string {
     return `Mombe Store: ${facility.name}, ${facility.capacityTonnes} tonnes`;
   }
 
-  return "Unkown Facility";
+  return "Facility Not recognized";
 }
 
 /**********************************************************************************
@@ -102,7 +102,7 @@ interface Supplier {
 }
 
 function getSupplierPhone(supplier: Supplier): string {
-  return supplier.contact?.phone ?? "No phone number supplied";
+  return supplier.contact?.phone ?? "No phone number on record";
 }
 
 interface ColdRoom {
