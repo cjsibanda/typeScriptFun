@@ -1,8 +1,8 @@
-///////////////////////////////////////////
-// TypeScript BasketBall Team
-///////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+/////// TypeScript BasketBall Team
+/////////////////////////////////////////////////////////////////
 
-//1. Generrics  & Tuples
+//1. Generics  & Tuples
 function wrapinPlayerGroup<T>(leader: string, detail: T): [string, T] {
   return [leader, detail];
 }
@@ -51,6 +51,38 @@ class euroSide extends BasketballTeam{
   }
 }
 
+// 3. Discriminated Unions
+interface TraditionalStadium {
+  kind: "traditional";
+  minSeats: number;
+  owned: boolean;
+}
+
+interface ModernArena {
+  kind: "modern";
+  minSeats: number;
+  owned: boolean;
+}
+
+interface RentedFacility {
+  kind: "rented";
+  minSeats: number;
+  owned: boolean;
+  hoursRestriction: boolean;
+}
+
+type BuildingType = TraditionalStadium | ModernArena | RentedFacility;
+
+function getMaintenanceCosts(type: BuildingType): number {
+  switch(type.kind) {
+    case "traditional":
+      return type.minSeats * 20;
+    case "modern":
+      return type.minSeats * 30;
+    case "rented":
+      return type.minSeats * 15;
+  }
+}
 
 interface Player {
   playerNumber: string,
@@ -83,5 +115,7 @@ const testTeam: BasketballTeam[] = [
 testTeam.forEach(team => {
   console.log(`2. ${team.name}'s best cook`, team.bestGuard());
 })
+
+//
 
 console.log("=== TypeScript BasketBall Team Tests");
