@@ -21,7 +21,35 @@ abstract class BasketballTeam {
   abstract bestGuard(): string; 
 }
 
+class gLeagueSide extends BasketballTeam {
+  runPlay(): string {
+    return "run Jolly Roger Switch!";
+  }
 
+  bestGuard(): string {
+    return "Manu G.";
+  }
+}
+
+class startingFive extends BasketballTeam {
+  runPlay(): string {
+    return "Cali Loop Fade-away";
+  }
+
+  bestGuard(): string {
+    return "Kyrie I.";
+  }
+}
+
+class euroSide extends BasketballTeam{
+  runPlay(): string {
+    return "Left to right cut and pop";
+  }
+
+  bestGuard(): string {
+    return "Tony P"
+  }
+}
 
 
 interface Player {
@@ -44,5 +72,16 @@ function getPlayerNumber(value: unknown): string {
 //1. Testing Generics & Tuples
 const team = wrapinPlayerGroup("Chef Curry", {customerName: "Victor", playNumber: 33});
 console.log("1. Player Group Tuple:", team);
+
+// 2. Testing Polymorphism
+const testTeam: BasketballTeam[] = [
+  new gLeagueSide("Vipers", "Oakville", "Charles B", 12000, true),
+  new startingFive("Hornets", "Toronto", "Shaq O", 15000, false),
+  new euroSide("BobCats", "London", "Kenny G.", 14500, false)
+];
+
+testTeam.forEach(team => {
+  console.log(`2. ${team.name}'s best cook`, team.bestGuard());
+})
 
 console.log("=== TypeScript BasketBall Team Tests");
