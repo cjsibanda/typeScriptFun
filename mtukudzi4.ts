@@ -73,7 +73,7 @@ class Springbok extends SafariAnimal {
   }
 
   makeCall(): string {
-    retrun "Leaps high into the air!";
+    return "Leaps high into the air!";
   }
 
   getTourBiefing(): string {
