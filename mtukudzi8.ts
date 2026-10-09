@@ -116,6 +116,7 @@ testTeam.forEach(team => {
   console.log(`2. ${team.name}'s best cook`, team.bestGuard());
 })
 
-//
+// 3. Testing Descriminated Unions
+console.log("Test Descriminated Unions here...");
 
 console.log("=== TypeScript BasketBall Team Tests");
