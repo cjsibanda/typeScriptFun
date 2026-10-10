@@ -98,6 +98,26 @@ function getPlayerNumber(value: unknown): string {
   return player.playerNumber;
 }
 
+
+// 4 Union Itersection Types
+// Intersection types combine multiple types into one
+type playerType = "guard" | "forward" | "wing" | "center";
+
+interface Identifiable {
+  id: string;
+}
+
+interface Weighable {
+  weigthKg: number;
+}
+
+type WeighedPlayer = Identifiable & Weighable;
+
+function describePlayer(player: WeighedPlayer): string {
+  return `${player.id} weighs ${player.weightKg}kg`;
+}
+
+
 /********************************************************************************
 *********************** Trust But Verify ***************************************** 
 **********************************************************************************/
