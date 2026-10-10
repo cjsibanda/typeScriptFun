@@ -140,3 +140,12 @@ testTeam.forEach(team => {
 console.log("Test Descriminated Unions here...");
 
 console.log("=== TypeScript BasketBall Team Tests");
+
+// 4 Testing Union & Intersection types
+const player: WeighedPlayer = {
+  id: "Lebron-23",
+  weightKg: 90.71
+};
+
+console.log("4. The player description is:", describePlayer(player));
+
