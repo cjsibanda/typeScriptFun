@@ -163,3 +163,9 @@ const player: WeighedPlayer = {
 
 console.log("4. The player description is:", describePlayer(player));
 
+// 5. Testing as const + typeof + indexed access types
+const selectedPosition: BasketballPosition = "PG";
+
+console.log("5. Available Positions:", BASKETBALL_POSITIONS);
+console.log("5. Selected Position:", selectedPosition);
+
