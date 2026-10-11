@@ -117,6 +117,20 @@ function describePlayer(player: WeighedPlayer): string {
   return `${player.id} weighs ${player.weightKg}kg`;
 }
 
+// 5. AS CONST + TYPEOF + INDEXED ACCESS TYPES
+// Defines a fixed list of valid basketball positions
+// Typescript dervices the Position from the list
+const BASKETBALL_POSITIONS = [
+  "PG",
+  "SG",
+  "SF",
+  "PF",
+  "C"
+] as const;
+
+type BasketballPosition = typeof BASKETBALL_POSITIONS[number];
+
+
 
 /********************************************************************************
 *********************** Trust But Verify ***************************************** 
