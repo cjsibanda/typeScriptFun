@@ -184,3 +184,19 @@ const selectedPosition: BasketballPosition = "PG";
 console.log("5. Available Positions:", BASKETBALL_POSITIONS);
 console.log("5. Selected Position:", selectedPosition);
 
+// 6. Testing Basketball Player Card Interface
+const basketBallPlayer: BasketBallPlayerCard = {
+  name: "Chef Curry",
+  overallRating: 98,
+  position: "PG",
+  team: "Eagles"
+  imageUrl: "",
+  shooting: 99,
+  passing: 95,
+  dribbling: 98,
+  defense: 76,
+  rebounding: 89,
+  athleticism: 89
+};
+
+console.log("6. Basketball Player Card:", basketballPlayer);
