@@ -130,6 +130,21 @@ const BASKETBALL_POSITIONS = [
 
 type BasketballPosition = typeof BASKETBALL_POSITIONS[number];
 
+// 6. Interfaces + Player Card Data
+// Defines the structure of a basketball player card
+interface BasketBallPlayerCard {
+  name: string;
+  overallRating: number;
+  position: BasketballPosition;
+  team: string;
+  imageUrl: string;
+  shooting: number;
+  passing: number;
+  dribbling: number;
+  defense: number;
+  rebounding: number;
+  athleticism: number;
+}
 
 
 /********************************************************************************
