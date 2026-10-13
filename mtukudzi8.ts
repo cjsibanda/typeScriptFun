@@ -193,6 +193,18 @@ function isBaskestballPlayerCard(
 }
 
 
+//9. Object Spread + Partial Utility Type
+// Updates the selected players properties
+//... without losing the remaining stats
+function updateBaskeballPlayer(
+  player: BasketBallPlayerCard,
+  update: Partial<BasketBallPlayerCard>
+): BasketBallPlayerCard {
+  return {
+    ...player,
+    ...update
+  };
+}
 
 /********************************************************************************
 *********************** Trust But Verify ***************************************** 
@@ -271,3 +283,15 @@ console.log(
   "8. Invalid Player Card:",
   isBaskestballPlayerCard({ name: "Unknown Player" })
 );
+
+// 9. Testing Partial & Object Spread
+const updatedPlayer = updateBaskeballPlayer(
+  basketballPlayer,
+  {
+    overallRating: 98,
+    team: "Dream Team"
+  }
+)
+
+console.log("9. Updated Player:", updatedPlayer);
+console.log("9. Original Player Remains Unchanged: ", basketballPlayer)
