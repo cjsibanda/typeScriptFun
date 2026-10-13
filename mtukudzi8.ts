@@ -206,6 +206,47 @@ function updateBaskeballPlayer(
   };
 }
 
+// 10. JSON + Loca; Storage + Error Handling
+// Saves and loads player cards in a browser
+// Runtime validation prevents invalid saved data from being trusted
+const BASKETBALL_STORAGE_KEY = "basketball_player_card";
+
+const defaultBasketballPlayer: BasketBallPlayerCard = {
+  name: "Chales Barkley",
+  overallRating: 99,
+  position: "SG",
+  team: "Niagara Saints",
+  imageUrl: "",
+  shooting: 98,
+  passing: 87,
+  dribbling: 98,
+  defense: 92,
+  rebounding: 87,
+  athleticism: 97
+};
+
+function loadBasketballPlayer(): BasketBallPlayerCard {
+  try {
+    const saved = localStorage.getItem(BASKETBALL_STORAGE_KEY);
+
+    if (saved !== null ) {
+      const parsed: unknown = JSON.parse(saved);
+
+      if (isBaskestballPlayerCard(parsed)) {
+        return parsed;
+      }
+
+      console.log("Player data NOT valid; using defaults.");
+    }
+  } catch (error: unknown) {
+    console.log("Failed to load player data:", error);
+  }
+
+  return { ...defaultBasketballPlayer };
+}
+
+
+
 /********************************************************************************
 *********************** Trust But Verify ***************************************** 
 **********************************************************************************/
