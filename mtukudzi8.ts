@@ -159,6 +159,40 @@ function getBasketballPlayerTier(rating: number): PlayerTier {
   return "bronze";
 }
 
+// 8. Unknown | Type Guards | Runtime Validation
+//Verifies saved player data before treating it as a player card
+function isBaskestballPlayerCard(
+  value: unknown
+): value is BasketBallPlayerCard {
+  if (typeof value !== "object" || value === null) {
+    return false;
+  }
+
+  const record = value as Record<string, unknown>;
+
+  return (
+    typeof record.name === "string" &&
+    typeof record.overallRating === "number" &&
+    Number.isFinite(record.overallRating) &&
+    BASKETBALL_POSITIONS.some(position => position === record.position) &&
+    typeof record.team === "string" &&
+    typeof record.imageUrl === "string" &&
+    typeof record.shooting === "number" &&
+    Number.isFinite(record.shooting) &&
+    typeof record.passing === "number" &&
+    Number.isFinite(record.passing) &&
+    typeof record.passing === "number" &&
+    Number.isFinite(record.dribbling) &&
+    typeof record.defense === "number" &&
+    Number.isFinite(record.defense) &&
+    typeof record.rebounding === "number" &&
+    Number.isFinite(record.rebounding) &&
+    typeof record.athleticism === "number" &&
+    Number.isFinite(record.athleticism)
+  );
+}
+
+
 
 /********************************************************************************
 *********************** Trust But Verify ***************************************** 
@@ -224,4 +258,16 @@ console.log(
 console.log(
   "7. Bronze Player Tier:",
   getBasketballPlayerTier(65)
+);
+
+// 8 Testing isBasketBallPlayerCard()
+// (Unknown + Type Guards)
+console.log(
+  "8. Valid Player Card:",
+  isBaskestballPlayerCard(basketballPlayer)
+);
+
+console.log(
+  "8. Invalid Player Card:",
+  isBaskestballPlayerCard({ name: "Unknown Player" })
 );
