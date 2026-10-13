@@ -147,6 +147,19 @@ interface BasketBallPlayerCard {
 }
 
 
+// 7. Union Types & Conditional Logic
+// Assigns a tier based on a player's overall rating.
+type PlayerTier = "elite" | "gold" | "silver" | "bronze";
+
+function getBasketballPlayerTier(rating: number): PlayerTier {
+  if (rating >= 92) return "elite";
+  if (rating >= 85) return "gold";
+  if (rating >= 75) return "silver";
+
+  return "bronze";
+}
+
+
 /********************************************************************************
 *********************** Trust But Verify ***************************************** 
 **********************************************************************************/
@@ -200,3 +213,15 @@ const basketballPlayer: BasketBallPlayerCard = {
 };
 
 console.log("6. Basketball Player Card:", basketballPlayer);
+
+// 7. Testing Player Rating Tiers ()
+// (Union Types and Conditional Logic)
+console.log(
+  "7. Curry's Player Tier:",
+  getBasketballPlayerTier(basketballPlayer.overallRating)
+);
+
+console.log(
+  "7. Bronze Player Tier:",
+  getBasketballPlayerTier(65)
+);
