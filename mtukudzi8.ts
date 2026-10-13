@@ -108,7 +108,7 @@ interface Identifiable {
 }
 
 interface Weighable {
-  weigthKg: number;
+  weightKg: number;
 }
 
 type WeighedPlayer = Identifiable & Weighable;
@@ -185,11 +185,11 @@ console.log("5. Available Positions:", BASKETBALL_POSITIONS);
 console.log("5. Selected Position:", selectedPosition);
 
 // 6. Testing Basketball Player Card Interface
-const basketBallPlayer: BasketBallPlayerCard = {
+const basketballPlayer: BasketBallPlayerCard = {
   name: "Chef Curry",
   overallRating: 98,
   position: "PG",
-  team: "Eagles"
+  team: "Eagles",
   imageUrl: "",
   shooting: 99,
   passing: 95,
