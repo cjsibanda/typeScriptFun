@@ -245,6 +245,20 @@ function loadBasketballPlayer(): BasketBallPlayerCard {
   return { ...defaultBasketballPlayer };
 }
 
+function saveBasketballPlayer(player: BasketBallPlayerCard):boolean {
+  try {
+    localStorage.setItem(
+      BASKETBALL_STORAGE_KEY,
+      JSON.stringify(player)
+    );
+
+     return true;
+  } catch (error: unknown) {
+    console.log("Failed to save player data:", error);
+    return false;
+  }
+}
+
 
 
 /********************************************************************************
@@ -336,3 +350,11 @@ const updatedPlayer = updateBaskeballPlayer(
 
 console.log("9. Updated Player:", updatedPlayer);
 console.log("9. Original Player Remains Unchanged: ", basketballPlayer)
+
+// 10. Testing JSON + Browser Storage
+// NOTE: run test in browser environment
+const savedSuccessfully = saveBasketballPlayer(updatedPlayer);
+console.log("10. Player Saved:", savedSuccessfully);
+const loadedPlayer = loadBasketballPlayer();
+console.log("10. Loaded Player:", loadedPlayer);
+
