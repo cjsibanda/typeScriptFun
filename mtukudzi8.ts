@@ -152,9 +152,9 @@ interface BasketBallPlayerCard {
 type PlayerTier = "elite" | "gold" | "silver" | "bronze";
 
 function getBasketballPlayerTier(rating: number): PlayerTier {
-  if (rating >= 92) return "elite";
-  if (rating >= 85) return "gold";
-  if (rating >= 75) return "silver";
+  if (rating >= 94) return "elite";
+  if (rating >= 87) return "gold";
+  if (rating >= 78) return "silver";
 
   return "bronze";
 }
@@ -215,7 +215,7 @@ const defaultBasketballPlayer: BasketBallPlayerCard = {
   name: "Chales Barkley",
   overallRating: 99,
   position: "SG",
-  team: "Niagara Saints",
+  team: "Burlington Bulldogs",
   imageUrl: "",
   shooting: 98,
   passing: 87,
@@ -265,7 +265,7 @@ function saveBasketballPlayer(player: BasketBallPlayerCard):boolean {
 *********************** Trust But Verify ***************************************** 
 **********************************************************************************/
 //1. Testing Generics & Tuples
-const team = wrapinPlayerGroup("Chef Curry", {customerName: "Victor", playNumber: 33});
+const team = wrapinPlayerGroup("Tim Duncan", {customerName: "Johnny", playNumber: 33});
 console.log("1. Player Group Tuple:", team);
 
 // 2. Testing Polymorphism
