@@ -287,26 +287,26 @@ console.log("=== TypeScript BasketBall Team Tests");
 // 4 Testing Union & Intersection types
 const player: WeighedPlayer = {
   id: "Lebron-23",
-  weightKg: 90.71
+  weightKg: 95.75
 };
 
 console.log("4. The player description is:", describePlayer(player));
 
 // 5. Testing as const + typeof + indexed access types
-const selectedPosition: BasketballPosition = "PG";
+const selectedPosition: BasketballPosition = "SG";
 
 console.log("5. Available Positions:", BASKETBALL_POSITIONS);
 console.log("5. Selected Position:", selectedPosition);
 
 // 6. Testing Basketball Player Card Interface
 const basketballPlayer: BasketBallPlayerCard = {
-  name: "Chef Curry",
+  name: "Andre Iguadala",
   overallRating: 98,
-  position: "PG",
-  team: "Eagles",
+  position: "SG",
+  team: "Wolverines",
   imageUrl: "",
   shooting: 99,
-  passing: 95,
+  passing: 96,
   dribbling: 98,
   defense: 76,
   rebounding: 89,
