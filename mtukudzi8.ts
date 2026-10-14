@@ -23,21 +23,21 @@ abstract class BasketballTeam {
 
 class gLeagueSide extends BasketballTeam {
   runPlay(): string {
-    return "run Jolly Roger Switch!";
+    return "run Jolly Roger Roll & Tuck!";
   }
 
   bestGuard(): string {
-    return "Manu G.";
+    return "Kawhi L.";
   }
 }
 
 class startingFive extends BasketballTeam {
   runPlay(): string {
-    return "Cali Loop Fade-away";
+    return "Cali Loop Fade-away pop";
   }
 
   bestGuard(): string {
-    return "Kyrie I.";
+    return "Victor W.";
   }
 }
 
@@ -47,7 +47,7 @@ class euroSide extends BasketballTeam{
   }
 
   bestGuard(): string {
-    return "Tony P"
+    return "Anthony E"
   }
 }
 
@@ -76,11 +76,11 @@ type BuildingType = TraditionalStadium | ModernArena | RentedFacility;
 function getMaintenanceCosts(type: BuildingType): number {
   switch(type.kind) {
     case "traditional":
-      return type.minSeats * 20;
+      return type.minSeats * 25;
     case "modern":
-      return type.minSeats * 30;
+      return type.minSeats * 35;
     case "rented":
-      return type.minSeats * 15;
+      return type.minSeats * 20;
   }
 }
 
